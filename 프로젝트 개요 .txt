@@ -1,0 +1,36 @@
+프로젝트 개요 
+
+주제 = 스팀스토어 카피
+
+페이지 종류 
+로그인화면(https://store.steampowered.com/login/?redir=&redir_ssl=1&snr=1_4_4__global-header)
+메인화면(https://store.steampowered.com/)
+상품 내부 페이지(https://store.steampowered.com/app/504230/Celeste/)
+장바구니(https://store.steampowered.com/cart)
+찜목록(https://store.steampowered.com/wishlist/profiles/76561198088294630#sort=order)
+뉴스(https://store.steampowered.com/news/)
+커뮤니티1(https://steamcommunity.com/)
+커뮤니티2(https://steamcommunity.com/discussions/)
+회원정보(https://steamcommunity.com/id/e34652/home/)
+고객지원(https://help.steampowered.com/ko/)
+
+데이터베이스 
+회원정보 = 회원 이메일(primary), 회원 비밀번호(not null), 닉네임, 캐시, 소지중인 게임, 구매내역, 국적
+게임 = 게임코드(primary), 게임이름, 게임 태그, 개발자, 평가, 출시일, 가격, 댓글 수
+게시글 = 인덱스, 게시글 내용, 작성자, 
+
+댓글 = (https://resilient-923.tistory.com/420)
+장바구니
+
+
+
+
+
+
+
+
+부가기능 
+댓글 
+로그인시 이메일로 코드 보내기
+scrollTop
+무한스크롤
