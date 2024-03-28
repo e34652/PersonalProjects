@@ -1,0 +1,11 @@
+데이터베이스 
+
+회원 테이블
+create table steam.member_TB(
+member_num INT AUTO_INCREMENT PRIMARY KEY,
+member_email VARCHAR(50) NOT NULL UNIQUE,
+member_password VARCHAR(20) NOT NULL,
+member_nicname VARCHAR(24) NOT NULL,
+member_authority BOOLEAN,
+member_nationality VARCHAR(30) NOT NULL
+)engine = InnoDB character set = utf8mb4member_tb
