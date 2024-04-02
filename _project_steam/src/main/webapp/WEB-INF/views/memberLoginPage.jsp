@@ -15,14 +15,15 @@
 <link href="https://community.cloudflare.steamstatic.com/public/shared/css/login.css?v=0H1th98etnSV&amp;l=koreana&amp;_cdn=cloudflare" rel="stylesheet" type="text/css" >
 <link href="https://community.cloudflare.steamstatic.com/public/css/skin_1/home.css?v=-6qQi3rZclGf&amp;l=koreana&amp;_cdn=cloudflare" rel="stylesheet" type="text/css" >
 <link href="https://community.cloudflare.steamstatic.com/public/shared/css/shared_responsive.css?v=KrKRjQbCfNh0&amp;l=koreana&amp;_cdn=cloudflare" rel="stylesheet" type="text/css" >
-<link href="https://community.cloudflare.steamstatic.com/public/css/skin_1/header.css?v=vh4BMeDcNiCU&amp;l=koreana&amp;_cdn=cloudflare" rel="stylesheet" type="text/css" ><link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="https://community.cloudflare.steamstatic.com/public/css/skin_1/header.css?v=vh4BMeDcNiCU&amp;l=koreana&amp;_cdn=cloudflare" rel="stylesheet" type="text/css" >
+<link href="css/login.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">VALVE_PUBLIC_PATH = "https:\/\/community.cloudflare.steamstatic.com\/public\/";</script><script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/scriptaculous/_combined.js?v=OeNIgrpEF8tL&amp;l=koreana&amp;_cdn=cloudflare&amp;load=effects,controls,slider,dragdrop" ></script>
 <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/global.js?v=EToM5vVWVuDV&amp;l=koreana&amp;_cdn=cloudflare" ></script>
 <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/jquery-1.11.1.min.js?v=.isFTSRckeNhC&amp;_cdn=cloudflare" ></script>
 <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/shared/javascript/tooltip.js?v=.zYHOpI1L3Rt0&amp;_cdn=cloudflare" ></script>
 <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/shared/javascript/shared_global.js?v=WVkjW4cQ29y0&amp;l=koreana&amp;_cdn=cloudflare" ></script>
-
+<script type="text/javascript" src="js/login.js"></script>
 	</head>
 <body class="login global responsive_page ">
 	<div
@@ -215,12 +216,12 @@
 		<div class="user">
 			<!-- ACTIONS
 			<div class="actions">
-				<a class="help" href="#signup-tab-content">Sign Up</a><a class="faq" href="#login-tab-content">Login</a>
+				<a class="help" href="#signup-tab-content">회원 가입</a><a class="faq" href="#login-tab-content">로그인</a>
 			</div>
 			-->
 			<!-- LOGO -->
 			<div class="logo1">
-				<a href="#"><img src="http://res.cloudinary.com/dpcloudinary/image/upload/v1506186248/logo.png" alt=""></a>
+				<a href=""><img src="http://res.cloudinary.com/dpcloudinary/image/upload/v1506186248/logo.png" alt=""></a>
 			</div>
 			<div class="recovery">
 				<h2>Password Recovery</h2>
@@ -237,31 +238,40 @@
 			<div class="form-wrap" >
 				<!-- TABS -->
 			  <div class="tabs">
-					<h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Login<span></a></h3>
-				<h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>Sign Up</span></a></h3>
+					<h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>로그인</span></a></h3>
+				<h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>회원가입</span></a></h3>
 			  </div>
 				<!-- TABS CONTENT -->
 			  <div class="tabs-content">
 					<!-- TABS CONTENT LOGIN -->
 				<div id="login-tab-content" class="active">
-				  <form class="login-form" action="" method="post">
-					<input type="text" class="input" id="user_login" autocomplete="off" placeholder="Email or Username">
-					<input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-					<input type="checkbox" class="checkbox" checked id="remember_me">
-					<label for="remember_me">Remember me</label>
-					<input type="submit" class="button" value="Login">
-				  </form>
-				  <div class="help-action">
-					<p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#">Forgot your password?</a></p>
+				  <form class="login-form" action="/login" method="post">
+					<input type="text" class="input" id="user_email" name="loginEmail" autocomplete="off" placeholder="Email">
+					<input type="password" class="input" id="user_pass" name="loginPw" autocomplete="off" placeholder="Password">
+					<div class="help-action" style="display: flex; justify-content: space-between;">
+					
+					<div><input type="checkbox" class="checkbox" name="rememberId" id="remember_me">
+					<label for="remember_me">아이디 저장</label></div>
+					
+					<div style="display: flex;"><p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#" >아이디 찾기</a></p> &nbsp;|&nbsp;
+					<p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgot" href="#" >비밀번호 찾기</a></p></div>
 				  </div>
+					<input type="submit" class="button" value="로그인">
+				  </form>
 				</div>
 					<!-- TABS CONTENT SIGNUP -->
 				<div id="signup-tab-content">
 				  <form class="signup-form" action="" method="post">
-					<input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">
-					<input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username">
-					<input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-					<input type="submit" class="button" value="Sign Up">
+					<input type="email" class="input" id="user_email" name="signUpEmail" autocomplete="off" placeholder="Email">					
+					<input type="password" class="input" id="user_pass" name="signUpPw" autocomplete="off" placeholder="Password">
+					<input type="text" class="input" id="user_nickname" name="signUpNickname" autocomplete="off" placeholder="Nickname">
+					<div class="select"><select name="signUpNationality">
+								<option selected value=none>Nationality</option>
+								<option value="korean">Korean</option>
+								<option value="chinese">Chinese</option>
+								<option value="japanese">Japanese</option>
+						</select></div>
+					<input type="submit" class="button" value="회원가입">
 				  </form>
 				  <div class="help-action">
 					<p>By signing up, you agree to our</p>
