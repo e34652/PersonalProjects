@@ -1,0 +1,32 @@
+package com.steam.repository;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.steam.model.MemberDto;
+
+
+@Mapper
+public interface MemberMapper {
+
+	public MemberDto selectMemberByNum(long num);
+	
+	public MemberDto selectMemberByEmail(String email);
+	
+	public MemberDto selectMemberByNickname(String nickname);
+
+	public List<MemberDto> selectMemberList();
+	
+	public void insertMember(MemberDto member);
+	
+	public void updateMember(MemberDto member);
+	
+	public void deleteMember(long id);
+	
+	public int countMembers();
+	
+
+		
+	
+}
