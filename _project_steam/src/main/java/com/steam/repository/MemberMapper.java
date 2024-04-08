@@ -18,11 +18,11 @@ public interface MemberMapper {
 
 	public List<MemberDto> selectMemberList();
 	
-	public void insertMember(MemberDto member);
+	public int insertMember(MemberDto member);
 	
-	public void updateMember(MemberDto member);
+	public int updateMember(MemberDto member);
 	
-	public void deleteMember(long id);
+	public int deleteMember(long id);
 	
 	public int countMembers();
 	

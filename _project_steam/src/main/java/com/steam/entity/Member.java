@@ -33,9 +33,8 @@ public class Member {
 	@Column(name="memberNickname", unique=true , columnDefinition = "varchar(72)")
 	private String nickname;
 
-	@Column(name="memberAuthority", columnDefinition = "varchar(2) default '0'")
-	@NonNull
-	private Integer authority;
+	@Column(name="memberAuthority", columnDefinition = "tinyint(2) default '0'")
+	private int authority;
 	
 	@NonNull
 	@Column(name="memberRegdate" , columnDefinition = "varchar(72)")

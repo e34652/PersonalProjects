@@ -1,7 +1,5 @@
 package com.steam.service.member;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +7,33 @@ import com.steam.model.LoginStatusDto;
 import com.steam.model.MemberDto;
 import com.steam.repository.MemberMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MemberLoginService {
 
 	@Autowired
 	MemberMapper mMapper;
 	
+	@Autowired
+	LoginStatusDto loginStat;
 	
-	
-	public void loginCheck(HttpServletRequest request) {
-		String email = request.getParameter("loginEmail");
-		String pw = request.getParameter("loginPw");
-		MemberDto mDto = mMapper.selectMemberByEmail(email);
-		LoginStatusDto loginStat = new LoginStatusDto();
+	public boolean setLoginStatus(String email, String pw) {
+        
 		
-		if (email != null && pw != null) {
+		MemberDto mDto = mMapper.selectMemberByEmail(email);
+		if (email != null && pw != null && mDto != null) {
 			if (mDto.getEmail().equals(email) && mDto.getPassword().equals(pw)) {
-				
-				loginStat.setLoginStatus(1);
-				return;
-			}
+				loginStat.setLoginStatus("member");
+				if(mDto.getAuthority() == 1) {
+					loginStat.setLoginStatus("admin");
+					return true;
+				}
+				return true;
+				}
 		}
-		loginStat.setLoginStatus(0);
-		return;
+		loginStat.setLoginStatus("false");
+		return false;
 	}
 }

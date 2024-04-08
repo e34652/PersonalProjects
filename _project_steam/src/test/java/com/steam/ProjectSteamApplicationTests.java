@@ -81,42 +81,42 @@ class ProjectSteamApplicationTests {
 	void selectAll() {
 		log.info("mList: {}", mMapper.selectMemberList());
 	}
-	
-	@Test
-	@Order(2)
-	@DisplayName("회원등록")
-	void insertMember() {
-		MemberDto member = MemberDto.builder()
-				.authority(0)
-				.email("156@123")
-				.nationality("한국")
-				.nickname("문곰문곰문곰")
-				.password("123")
-				.build();
-		
-		mMapper.insertMember(member);
-	}
-	
-	@Test
-	@Order(3)
-	@DisplayName("회원갱신")
-	void updateMember() {
-		MemberDto member = MemberDto.builder().
-				num(5).
-				authority(0).
-				email("144@123").
-				nationality("한국국").
-				nickname("문곰문곰문곰2").
-				password("123").
-				build();
-		mMapper.updateMember(member);
-	}
-	
+//	
+//	@Test
+//	@Order(2)
+//	@DisplayName("회원등록")
+//	void insertMember() {
+//		MemberDto member = MemberDto.builder()
+//				.authority(0)
+//				.email("156@123")
+//				.nationality("한국")
+//				.nickname("문곰문곰문곰")
+//				.password("123")
+//				.build();
+//		
+//		mMapper.insertMember(member);
+//	}
+//	
+//	@Test
+//	@Order(3)
+//	@DisplayName("회원갱신")
+//	void updateMember() {
+//		MemberDto member = MemberDto.builder().
+//				num(5).
+//				authority(0).
+//				email("144@123").
+//				nationality("한국국").
+//				nickname("문곰문곰문곰2").
+//				password("123").
+//				build();
+//		mMapper.updateMember(member);
+//	}
+//	
 	@Test
 	@Order(4)
 	@DisplayName("회원조회")
-	void selectMemberByNum() {
-		log.info("member: {}", mMapper.selectMemberByNum(2));
+	void selectMemberByEmail() {
+		log.info("member: {}", mMapper.selectMemberByNum(1));
 	}
 //	@Test
 //	@Order(5)
@@ -124,7 +124,7 @@ class ProjectSteamApplicationTests {
 //	void deleteMember() {
 //		mMapper.deleteMember(1);
 //	}
-
+//
 	@Test
 	@Order(6)
 	@DisplayName("카운트")

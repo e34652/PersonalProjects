@@ -20,11 +20,11 @@ import lombok.ToString;
 @NoArgsConstructor
 public class MemberDto {
 
-	long num;
+	private long num;
 	@NonNull private String email;
 	@NonNull private String password;
 	@NonNull private String nickname;
-	@NonNull private Integer authority;
+	private int authority;
 	private String regdate;
 	@NonNull private String nationality;
 }

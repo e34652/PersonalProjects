@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class=" responsive" lang="ko">
 <head>
@@ -26,6 +27,9 @@
 <script type="text/javascript" src="js/login.js"></script>
 	</head>
 <body class="login global responsive_page ">
+
+
+
 	<div
 	role="banner"
 	id="global_header"
@@ -35,7 +39,7 @@
 	  <div class="logo" style="margin-top: -20px; margin-left: 30px;";>
 		<span id="logo_holder" >
 		  <a
-			href="root"
+			href="/"
 			aria-label="Steam 홈페이지 링크"
 		  >
 		  <img
@@ -55,7 +59,7 @@
         >
           <a
             class="menuitem supernav supernav_active"
-            href="https://store.steampowered.com/?snr=1_4_4__global-header"
+            href="/"
             data-tooltip-type="selector"
             data-tooltip-content=".submenu_store"
           >
@@ -228,9 +232,9 @@
 			  <div class="tabs-content">
 					<!-- TABS CONTENT LOGIN -->
 				<div id="login-tab-content" class="active">
-				  <form class="login-form" action="/login" method="post">
-					<input type="text" class="input" id="user_email" name="loginEmail" autocomplete="off" placeholder="Email">
-					<input type="password" class="input" id="user_pass" name="loginPw" autocomplete="off" placeholder="Password">
+				  <form class="login-form" action="/login" method="post" onsubmit="return validateLoginForm()">
+					<input type="text" class="input" id="loginEmail" name="loginEmail" autocomplete="off" placeholder="Email">
+					<input type="password" class="input" id="loginPw" name="loginPw" autocomplete="off" placeholder="Password">
 					<div class="help-action" style="display: flex; justify-content: space-between;">
 					
 					<div><input type="checkbox" class="checkbox" name="rememberId" id="remember_me">
@@ -239,21 +243,24 @@
 					<div style="display: flex;"><p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgotId" href="#" >아이디 찾기</a></p> &nbsp;|&nbsp;
 					<p><i class="fa fa-arrow-left" aria-hidden=""></i><a class="forgot" href="#" >비밀번호 찾기</a></p></div>
 				  </div>
+				<div id="loginWarningMessage" style=" text-align: center; color: red;"></div>
 					<input type="submit" class="button" value="로그인">
 				  </form>
+				 
 				</div>
 					<!-- TABS CONTENT SIGNUP -->
 				<div id="signup-tab-content">
-				  <form class="signup-form" action="" method="post">
-					<input type="email" class="input" id="user_email" name="signUpEmail" autocomplete="off" placeholder="Email">					
-					<input type="password" class="input" id="user_pass" name="signUpPw" autocomplete="off" placeholder="Password">
-					<input type="text" class="input" id="user_nickname" name="signUpNickname" autocomplete="off" placeholder="Nickname">
-					<div class="select"><select name="signUpNationality">
+				  <form class="signup-form" action="/signUp" method="post" onsubmit="return validateSignUpForm()">
+					<input type="email" class="input" id="signUpEmail" name="signUpEmail" autocomplete="off" placeholder="Email">					
+					<input type="password" class="input" id="signUpPw" name="signUpPw" autocomplete="off" placeholder="Password">
+					<input type="text" class="input" id="signUpNickname" name="signUpNickname" autocomplete="off" placeholder="Nickname">
+					<div class="select"><select id="signUpNationality" name="signUpNationality" >
 								<option selected value=none>Nationality</option>
 								<option value="korean">Korean</option>
 								<option value="chinese">Chinese</option>
 								<option value="japanese">Japanese</option>
 						</select></div>
+						<div id="signUpWarningMessage" style="color: red;"></div>
 					<input type="submit" class="button" value="회원가입" style="margin-top: 75px">
 				  </form>
 				</div>
@@ -278,7 +285,74 @@
 		</div>
 	  </div>
 
+	<c:if test="${not empty error}">
+		<script>
+			validateLoginResult();		
+			function validateLoginResult() {
+				//필드들의 값을 가져와 변수에 저장
+			    let warning = document.getElementById("loginWarningMessage");
+			    warning.innerHTML = "<br>아이디 또는 비밀번호가 일치하지 않습니다";
+			    }
+		</script>
+	</c:if>
+	
+		<c:if test="${loginStatus}">
+		<script>
+			loggedInAlready();		
+			function loggedInAlready() {
+			    window.history.back();
+			}
+		</script>
+	</c:if>
+	
+<script>
+//로그인 폼 null 체크
 
 
+
+function validateLoginForm() {
+	//필드들의 값을 가져와 변수에 저장
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPass").value;
+   
+
+    // 입력 필드의 값이 비어 있는지 확인
+   if (email === "" || password === "") {
+        // 경고 메시지
+        document.getElementById("loginWarningMessage").innerHTML = "모든 필드를 입력해주세요";
+        return false; // 폼 제출을 막음
+    } else {
+        // 모든 필드가 채워져 있으면 제출 허용
+        return true;
+    }
+}
+//회원가입 폼 null 체크
+function validateSignUpForm() {
+    let email = document.getElementById("signUpEmail").value;
+    let password = document.getElementById("signUpPw").value;
+    let nickname = document.getElementById("signUpNickname").value;
+    let nationality = document.getElementById("signUpNationality").value;
+    // 기타 필드들의 값을 가져와 변수에 저장
+
+    // 입력 필드의 값이 비어 있는지 확인
+   if (email === "" || password === "" || nickname === "" || nationality === "") {
+        // 경고 메시지 표시
+        document.getElementById("signUpWarningMessage").innerHTML = "모든 필드를 입력해주세요.";
+        return false; // 폼 제출을 막음
+    } else {
+        // 모든 필드가 채워져 있으면 제출 허용
+        return true;
+    }
+}
+
+document.getElementById("loginEmail").addEventListener("input", function(event) {
+    var inputValue = event.target.value;
+    // 스페이스 제거
+    var trimmedValue = inputValue.replace(/\s/g, "");
+    // 입력된 값 업데이트
+    event.target.value = trimmedValue;
+});
+
+</script>
 </body>
 </html>

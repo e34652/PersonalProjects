@@ -3,7 +3,7 @@
 
 <mapper namespace="com.steam.repository.MemberMapper">
 
-<resultMap id="memberResultMap" type="com.steam.model.MemberDto">
+<resultMap id="member" type="com.steam.model.MemberDto">
     <id property="num" column="member_num"/>
     <result property="email" column="member_email"/>
     <result property="password" column="member_password"/>
@@ -14,12 +14,13 @@
     <!-- 다른 필드들에 대한 매핑 추가 -->
 </resultMap>
 
-	<select id="countMembers" resultType="Integer">
+
+	<select id="countMembers" resultType="Int">
 		select count(*) from member_tb
 	</select>
 
 
-	<select id="selectMemberByNum" parameterType= "long" resultType="com.steam.model.MemberDto">
+	<select id="selectMemberByNum" parameterType= "long" resultMap="member">
 		<![CDATA[
 			SELECT *
 			FROM member_tb
@@ -27,7 +28,7 @@
 		]]>
 	</select>
 	
-	<select id="selectMemberByNickname" parameterType= "String" resultType="com.steam.model.MemberDto">
+	<select id="selectMemberByNickname" parameterType= "String" resultMap="member">
 		<![CDATA[
 			SELECT *
 			FROM member_tb
@@ -35,7 +36,7 @@
 		]]>
 	</select>
 	
-	<select id="selectMemberByEmail" parameterType= "String" resultType="com.steam.model.MemberDto">
+	<select id="selectMemberByEmail" parameterType= "String" resultMap="member">
 		<![CDATA[
 			SELECT *
 			FROM member_tb
@@ -43,7 +44,7 @@
 		]]>
 	</select>
 
-	<select id="selectMemberList" resultType="com.steam.model.MemberDto">
+	<select id="selectMemberList" resultMap="member">
 		<![CDATA[
 			SELECT * FROM member_tb
 			
