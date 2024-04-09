@@ -3,6 +3,7 @@ encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/application.properties=UTF-8
 encoding//src/main/webapp/WEB-INF/views/loginForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/memberManagement.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/productDetail.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/root.jsp=UTF-8
 encoding//src/test/java=UTF-8

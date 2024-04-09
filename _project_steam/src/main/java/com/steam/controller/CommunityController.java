@@ -15,7 +15,7 @@ import com.steam.service.member.MemberLoginService;
 import com.steam.service.member.MemberSignUpService;
 
 @Controller
-public class ProductController {
+public class CommunityController {
 
 	@Autowired
 	LoginStatusDto loginStatusDto;
@@ -25,17 +25,13 @@ public class ProductController {
 	
 	@Autowired
 	MemberSignUpService mSignUpS;
-	
-	@GetMapping("/store")
-	public String store() {
-		return "redirect:/";
+		
+	@GetMapping("/community")
+	public String community() {
+		return "community";
 	}
 	
-	@GetMapping("/wishlist")
-	public String wishList() {
-		return "wishList";
-	}
-	
+
 //	@PostMapping
 	
 }

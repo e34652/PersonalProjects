@@ -283,11 +283,12 @@
                 aria-label="계정 메뉴"
               >
               <c:if test="${loginStatus eq 'admin'}">		
-					<li><a href="memberList.do">Administration</a></li>
+					<a href="/memberManagement">회원관리 | </a>
+					<a href="/productManagement">상품관리 | </a>
 				</c:if>
 				<c:choose>
 					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
-						<li><a href="memberLogout.do">Logout</a></li>
+						<a href="/logout">로그아웃</a>
 					</c:when>
 					<c:otherwise>
 				     <a

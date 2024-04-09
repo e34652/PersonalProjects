@@ -25,12 +25,6 @@ public class MemberController {
 	
 	@Autowired
 	MemberSignUpService mSignUpS;
-	
-	@GetMapping("/")
-	public String root(Model model) {
-		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
-		return "root";
-	}
 
 	@GetMapping("/loginForm")
 	public String loginForm(Model model) {
@@ -54,6 +48,13 @@ public class MemberController {
 		        return "/loginForm";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		loginStatusDto.setLoginStatus("visitor");
+		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+	    return "redirect:/"; // 실제 뷰 페이지의 경로를 반환
+	}
+	
 	@PostMapping("/signUp")
 	public String signUp(HttpServletRequest request, Model model) {
 			String email = request.getParameter("signUpEmail");
@@ -72,31 +73,6 @@ public class MemberController {
 		return "loginForm"; // 실제 뷰 페이지의 경로를 반환
 	}
 	
-	@GetMapping("/logout")
-	public String logout(Model model) {
-		loginStatusDto.setLoginStatus("visitor");
-		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
-	    return "/"; // 실제 뷰 페이지의 경로를 반환
-	}
-	
-	@GetMapping("/myPage")
-	public String myPage() {
-		return "myPage";
-	}
-	
-	@GetMapping("/myGames")
-	public String myGames() {
-		return "myGames";
-	}
-	
-	@GetMapping("/myOrders")
-	public String myOrders() {
-		return "myOrders";
-	}
-	@GetMapping("/myInfo")
-	public String myInfo() {
-		return "myInfo";
-	}
 //	@PostMapping
 	
 }

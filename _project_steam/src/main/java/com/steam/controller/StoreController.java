@@ -25,91 +25,18 @@ public class StoreController {
 	
 	@Autowired
 	MemberSignUpService mSignUpS;
-	
+		
+	@GetMapping("/news")
+	public String news() {
+		return "news";
+	}
 	@GetMapping("/")
 	public String root(Model model) {
 		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
 		return "root";
 	}
+	
 
-	@GetMapping("/loginForm")
-	public String memberLoginPage(Model model) {
-		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
-		System.out.println(loginStatusDto.getLoginStatus());
-	    return "loginForm"; // 실제 뷰 페이지의 경로를 반환
-	}
-	
-	@PostMapping("/login")
-	public String login(HttpServletRequest request,Model model) {
-
-	     String email = request.getParameter("loginEmail");
-	        String password = request.getParameter("loginPw");
-	        
-	        if (email != null && password != null) {
-	            if (mLoginS.setLoginStatus(email, password)) {
-	                return "redirect:/";
-	            }
-	        }
-			 model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다");
-		        return "/loginForm";
-	}
-	
-	@PostMapping("/signUp")
-	public String signUp(HttpServletRequest request, Model model) {
-			String email = request.getParameter("signUpEmail");
-			String pw = request.getParameter("signUpPw");
-			String nickname = request.getParameter("signUpNickname");
-			String nationality = request.getParameter("signUpNationality");
-			
-			MemberDto mDto = MemberDto.builder()
-					.email(email)
-					.password(pw)
-					.nickname(nickname)
-					.nationality(nationality)
-					.build();
-		
-		int result = mSignUpS.createAccount(mDto);
-		return "loginForm"; // 실제 뷰 페이지의 경로를 반환
-	}
-	
-	@GetMapping("/store")
-	public String store() {
-		return "redirect:/";
-	}
-	
-	@GetMapping("/wishlist")
-	public String wishList() {
-		return "wishList";
-	}
-	
-	@GetMapping("/news")
-	public String news() {
-		return "news";
-	}
-	
-	@GetMapping("/community")
-	public String community() {
-		return "community";
-	}
-	
-	@GetMapping("/myPage")
-	public String myPage() {
-		return "myPage";
-	}
-	
-	@GetMapping("/myGames")
-	public String myGames() {
-		return "myGames";
-	}
-	
-	@GetMapping("/myOrders")
-	public String myOrders() {
-		return "myOrders";
-	}
-	@GetMapping("/myInfo")
-	public String myInfo() {
-		return "myInfo";
-	}
 //	@PostMapping
 	
 }
