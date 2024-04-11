@@ -5,12 +5,12 @@
 
 <mapper namespace="com.steam.repository.ProductMapper">
 
-<resultMap id="productResultMap" type="com.steam.model.ProductDto">
+<resultMap id="product" type="com.steam.model.ProductDto">
     <id property="num" column="product_num"/>
     <result property="name" column="product_name"/>
     <result property="genre" column="product_genre"/>
     <result property="price" column="product_price"/>
-    <result property="releaseDate" column="product_releaseDate"/>
+    <result property="releasedate" column="product_releasedate"/>
     <result property="simple" column="product_simple"/>
     <result property="detail" column="product_detail"/>
     <!-- 다른 필드들에 대한 매핑 추가 -->
@@ -22,28 +22,28 @@
 	</select>
 
 	<select id="selectProductByNum"
-		resultType="com.steam.model.ProductDto" parameterType="int">
+		resultMap="product" parameterType="long">
 		SELECT *
 		FROM product_tb
 		WHERE product_num = #{num}
 	</select>
 	
 	<select id="selectProductByGenre"
-		resultType="com.steam.model.ProductDto" parameterType="String">
+		resultMap="product" parameterType="String">
 		SELECT *
 		FROM product_tb
 		WHERE product_num = #{genre}
 	</select>
 	
 	<select id="selectProductByName"
-		resultType="com.steam.model.ProductDto" parameterType="String">
+		resultMap="product" parameterType="String">
 		SELECT *
 		FROM product_tb
 		WHERE product_num = #{name}
 	</select>
 
 	<select id="selectProductList"
-		resultType="com.steam.model.ProductDto">
+		resultMap="product">
 		SELECT *
 		FROM product_tb
 	</select>
@@ -80,7 +80,7 @@
 		product_num = #{num}
 	</update>
 
-	<delete id="deleteProduct" parameterType="int">
+	<delete id="deleteProduct" parameterType="long">
 		DELETE FROM product_tb
 		WHERE
 		product_num = #{num}

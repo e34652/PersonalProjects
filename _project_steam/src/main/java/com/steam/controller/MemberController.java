@@ -44,7 +44,7 @@ public class MemberController {
 	                return "redirect:/";
 	            }
 	        }
-			 model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다");
+			 model.addAttribute("error", "뭔가있다");
 		        return "/loginForm";
 	}
 	
@@ -71,8 +71,5 @@ public class MemberController {
 		
 		int result = mSignUpS.createAccount(mDto);
 		return "loginForm"; // 실제 뷰 페이지의 경로를 반환
-	}
-	
-//	@PostMapping
-	
+	}	
 }

@@ -76,13 +76,15 @@
       src="https://community.cloudflare.steamstatic.com/public/shared/javascript/shared_global.js?v=WVkjW4cQ29y0&amp;l=koreana&amp;_cdn=cloudflare"
     ></script>
     <script type="text/javascript" src="js/login.js"></script>
+    
+
   </head>
   <body class="login global responsive_page">
     <div role="banner" id="global_header" data-panel='{"flow-children":"row"}'>
       <div class="content">
-        <div class="logo" style="margin-top: -20px; margin-left: 30px" ;>
+        <div class="logo" style="margin-top: -20px; margin-left: 30px;">
           <span id="logo_holder">
-            <a href="root" aria-label="Steam 홈페이지 링크">
+            <a href="/" aria-label="Steam 홈페이지 링크">
               <img
                 src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
                 width="146"
@@ -100,7 +102,7 @@
         >
           <a
             class="menuitem supernav supernav_active"
-            href="https://store.steampowered.com/?snr=1_4_4__global-header"
+            href="/"
             data-tooltip-type="selector"
             data-tooltip-content=".submenu_store"
           >
@@ -178,18 +180,30 @@
             });
           });
         </script>
-
-        <div id="global_actions">
-          <div role="navigation" id="global_action_menu" aria-label="계정 메뉴">
-            <h3>
-              <a class="global_action_link" href="/loginForm">로그인</a>
-              &nbsp;|&nbsp;
-              <a class="global_action_link" href="/signUpForm"
-                >회원가입</a
-              >
-            </h3>
-          </div>
-        </div>
+<div id="global_actions">
+          <c:if test="${loginStatus eq 'admin'}">		
+					<a href="/memberManagement">회원관리 | </a>
+					<a href="/productManagement">상품관리 | </a>
+				</c:if>
+				<c:choose>
+					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
+						<a href="/logout">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+				     <a
+                  class="global_action_link"
+                  href="/loginForm"
+                  >로그인</a
+                >
+                &nbsp;|&nbsp;
+                <a
+                  class="global_action_link"
+                  href="/loginForm"
+                  >회원가입</a
+                >
+					</c:otherwise>
+				</c:choose>
+				</div>
       </div>
     </div>
     <!-- 글로벌 헤더 끝 -->
@@ -221,9 +235,7 @@
                   <td>${member.regdate}</td>
                   <td>${member.nationality}</td>
                   <td>
-                    <a href="mEditButton?num=${member.num}" class="btn btn-light"
-                      >수정</a
-                    >
+                    <a id="edit_${member.num}" href="#" class="btn btn-light edit-button">수정</a>
                   </td>
                   <td>
                     <a id="clickDelete"
@@ -237,13 +249,24 @@
           </tbody>
         </table>
       </div>
+      
+      
       <aside>
+      
         <div class="sideForm">
+        <form id="manageForm"method="post" action="mInsertButton">
           <div class="title">회원관리</div>
           <div class="input-container ic1">
             <label for="member_num" class="placeholder">회원번호</label>
             <br /><br />
-            <input id="member_num" class="input" type="text" placeholder=" " />
+            <input 
+            id="member_num" 
+            class="input" 
+            type="text" 
+            readonly 
+            placeholder="회원번호 미입력시 제출 = 삽입" 
+            name="num"
+            />
             <div class="cut"></div>
             <br />
           </div>
@@ -254,12 +277,27 @@
               id="member_email"
               class="input"
               type="email"
-              placeholder=" "
+              placeholder="ex)123@123"
+              name="email"
             />
             <div class="cut"></div>
             <br />
           </div>
 
+		  <div class="input-container ic1">
+            <label for="member_password" class="placeholder">비밀번호</label>
+            <br /><br />
+            <input
+              id="member_password"
+              class="input"
+              type="password"
+              placeholder="최대 24자"
+              name="password"
+            />
+            <div class="cut"></div>
+            <br />
+          </div>
+          
           <div class="input-container ic1">
             <label for="member_nickname" class="placeholder">닉네임</label>
             <br /><br />
@@ -267,7 +305,8 @@
               id="member_nickname"
               class="input"
               type="text"
-              placeholder=" "
+              placeholder="ex)세큐깜"
+              name="nickname"
             />
             <div class="cut"></div>
             <br />
@@ -279,10 +318,9 @@
             <select
               class="select"
               id="member_authority"
-              name="member_authority"
+              name="authority"
             >
               <option selected value="none">Authority</option>
-              <option value="visitor">Visitor</option>
               <option value="member">Member</option>
               <option value="admin">Admin</option>
             </select>
@@ -297,7 +335,7 @@
             <select
               class="select"
               id="member_nationality"
-              name="member_nationality"
+              name="nationality"
             >
               <option selected value="none">Nationality</option>
               <option value="korean">Korean</option>
@@ -306,11 +344,50 @@
             </select>
             <div class="cut"></div>
           </div>
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <button type="submit" class="submit">submit</button>
+          <br/>
+          <button type="submit" class="submit">제출</button>
+          </form>
         </div>
       </aside>
     </main>
+<script>  
+$(document).ready(function() {
+    // 특정 버튼을 클릭했을 때
+     $('a.edit-button').click(function() {
+        var memberId = $(this).attr('id').split('_')[1];
+        $.ajax({
+            url: '/mEditButton?num=' + memberId,
+            type: 'POST', // GET 요청
+            dataType: 'json', // 응답 데이터 타입은 JSON으로 가정
+            success: function(data) { // 성공적으로 응답을 받았을 때
+                // 받은 데이터를 처리하여 페이지에 표시
+                $('#member_num').val(data.num); // 결과를 특정 요소에 삽입
+                $('#member_email').val(data.email);
+                $('#member_password').val(data.password);
+                $('#member_nickname').val(data.nickname);
+                $('#member_authority').val(data.authority);
+                $('#member_nationality').val(data.nationality);
+            },
+            error: function(xhr, status, error) { // 요청 실패 시
+                console.error('Error:', error); // 콘솔에 에러 로그 출력
+            }
+        });
+    });
+});
+
+
+document.getElementById("manageForm").addEventListener("submit", function(event) {
+    // input 요소의 값 가져오기
+    var memberNum = document.getElementById("member_num").value;
+    
+    // 회원번호가 비어있지 않으면
+    if (memberNum.trim() !== "") {
+        // 폼의 action 변경
+        this.action = "/mUpdateButton"; // 새로운 action으로 변경
+    }
+});
+</script>
+
 
   </body>
 </html>

@@ -30,6 +30,17 @@ public class StoreController {
 	public String news() {
 		return "news";
 	}
+	
+	@GetMapping("/store")
+	public String store() {
+		return "redirect:/";
+	}
+	
+	@GetMapping("/wishlist")
+	public String wishList() {
+		return "wishList";
+	}
+	
 	@GetMapping("/")
 	public String root(Model model) {
 		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());

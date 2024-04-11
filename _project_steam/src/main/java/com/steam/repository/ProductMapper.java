@@ -13,11 +13,11 @@ public interface ProductMapper {
 
 	int countProducts();
 	
-	ProductDto selectProductByNum(int num);
+	ProductDto selectProductByNum(long num);
 	
 	ProductDto selectProductByGenre(String genre);
 	
-	ProductDto selectProductNamePrice(String name);
+	ProductDto selectProductByName(String name);
 	
     List<ProductDto> selectProductList();
     
@@ -25,7 +25,7 @@ public interface ProductMapper {
     
     void updateProduct(ProductDto product);
     
-    void deleteProduct(int num);
+    void deleteProduct(long num);
     
     
     

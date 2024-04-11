@@ -15,13 +15,14 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
+@NoArgsConstructor
 public class ProductDto {
 
-    private int num;
+    private long num;
     @NonNull private String name;
     @NonNull private String genre;
-    @NonNull private String releaseDate;
-    @NonNull private Integer price;
-    private String simple;
-    private String detail;
+    @NonNull private String releasedate;
+    private int price;
+    @NonNull private String simple;
+    @NonNull private String detail;
 }

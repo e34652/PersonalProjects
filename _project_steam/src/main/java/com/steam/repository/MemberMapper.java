@@ -22,7 +22,7 @@ public interface MemberMapper {
 	
 	public int updateMember(MemberDto member);
 	
-	public int deleteMember(long id);
+	public int deleteMember(long num);
 	
 	public int countMembers();
 	

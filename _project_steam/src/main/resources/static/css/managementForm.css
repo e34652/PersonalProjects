@@ -5,7 +5,6 @@
   height: 700px;
   padding: 20px;
   margin-left: 4em;
-  margin-top: 2em;
   width: 320px;
 }
 
@@ -87,4 +86,9 @@
 
 .submit:active {
   background-color: #06b;
+}
+
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+  padding-left: 3.5rem;
+  z-index: 3;
 }

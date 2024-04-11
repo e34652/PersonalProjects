@@ -24,7 +24,7 @@ public class MemberDto {
 	@NonNull private String email;
 	@NonNull private String password;
 	@NonNull private String nickname;
-	private int authority;
+	@NonNull private String authority;
 	private String regdate;
 	@NonNull private String nationality;
 }

@@ -26,14 +26,14 @@ public class MemberLoginService {
 		if (email != null && pw != null && mDto != null) {
 			if (mDto.getEmail().equals(email) && mDto.getPassword().equals(pw)) {
 				loginStat.setLoginStatus("member");
-				if(mDto.getAuthority() == 1) {
+				if(mDto.getAuthority().equals("admin")) {
 					loginStat.setLoginStatus("admin");
 					return true;
 				}
 				return true;
 				}
 		}
-		loginStat.setLoginStatus("false");
+		loginStat.setLoginStatus("visitor");
 		return false;
 	}
 }
