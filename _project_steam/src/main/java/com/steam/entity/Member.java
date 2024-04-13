@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+
+
 import lombok.NonNull;
+
 
 @Entity
 @Table(name = "member_tb", uniqueConstraints = @UniqueConstraint(columnNames = {"memberEmail", "memberNickname"}))
@@ -19,7 +22,7 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="memberNum", columnDefinition = "bigint")
-	long num;
+	private long num;
 
 	@NonNull
 	@Column(name="memberEmail", unique=true, columnDefinition = "varchar(72)")
@@ -33,7 +36,7 @@ public class Member {
 	@Column(name="memberNickname", unique=true , columnDefinition = "varchar(72)")
 	private String nickname;
 
-	@Column(name="memberAuthority", columnDefinition = "varchar(24) default '0'")
+	@Column(name="memberAuthority", columnDefinition = "varchar(24) default 'member'")
 	private String authority;
 	
 	@NonNull

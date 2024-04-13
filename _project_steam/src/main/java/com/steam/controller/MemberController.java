@@ -44,7 +44,7 @@ public class MemberController {
 	                return "redirect:/";
 	            }
 	        }
-			 model.addAttribute("error", "뭔가있다");
+			 model.addAttribute("error", "123");
 		        return "/loginForm";
 	}
 	
@@ -70,6 +70,6 @@ public class MemberController {
 					.build();
 		
 		int result = mSignUpS.createAccount(mDto);
-		return "loginForm"; // 실제 뷰 페이지의 경로를 반환
+		return "redirect:/loginForm"; // 실제 뷰 페이지의 경로를 반환
 	}	
 }

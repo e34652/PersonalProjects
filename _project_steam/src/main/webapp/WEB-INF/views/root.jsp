@@ -395,20 +395,28 @@
                 </div>
 
                 
-        
-
-<a href="https://store.steampowered.com/app/2688850/EZ2ON_REBOOT__R__HARDCORE_TANOC_Music_Pack_Vol1/?snr=1_4_4__145" class="tab_item  "  data-ds-appid="2688850" data-ds-itemkey="App_2688850" data-ds-tagids="[19,597,701,1752,1621,7948,4182]">
+     
+<c:forEach var="product" items="${productList}">
+<a href="/productDetail%${product.num}" class="tab_item  ">
   <div class="tab_item_cap">
-    <img class="tab_item_cap_img" src="https://store.cloudflare.steamstatic.com/public/shared/images/trans.gif" id="delayedimage_home_tabs_autoload_2" alt="EZ2ON REBOOT : R - HARDCORE TANO*C Music Pack Vol.1" >
+    <img class="tab_item_cap_img" src="/img/preview/${product.name}_preview.jpg" id="delayedimage_home_tabs_autoload_2" alt="${product.name}" >
   </div>
-      <div class="discount_block tab_item_discount" data-price-final="1232000" data-bundlediscount="0" data-discount="15"><div class="discount_pct">-15%</div><div class="discount_prices"><div class="discount_original_price">₩ 14,500</div><div class="discount_final_price">₩ 12,320</div></div></div>		<div class="tab_item_content">
-    <div class="tab_item_name">EZ2ON REBOOT : R - HARDCORE TANO*C Music Pack Vol.1</div>
+   <div class="discount_block tab_item_discount no_discount" data-price-final=${product.price} data-bundlediscount="0" data-discount="0"><div class="discount_prices"><div class="discount_final_price">₩ ${product.price}</div></div></div>
+    		
+      <div class="tab_item_content">
+    <div class="tab_item_name">${product.name}</div>
     <div class="tab_item_details">
-      <span class="platform_img win"></span>				<div class="tab_item_top_tags"><span class="top_tag">액션</span><span class="top_tag">, 캐주얼</span><span class="top_tag">, 스포츠</span><span class="top_tag">, 리듬</span></div>
+      <span class="platform_img win"></span>
+      <div class="tab_item_top_tags">
+      <span class="top_tag">${product.genre}</span>
+      
+      </div>
     </div>
   </div>
   <div style="clear: both;"></div>
 </a>
+</c:forEach>
+
           <!-- Footer -->
           <div id="footer_spacer" class="small_footer"></div>
           <div id="footer" class="small_footer">

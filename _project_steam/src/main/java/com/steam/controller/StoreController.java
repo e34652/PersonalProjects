@@ -1,5 +1,7 @@
 package com.steam.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.steam.model.LoginStatusDto;
 import com.steam.model.MemberDto;
+import com.steam.model.ProductDto;
 import com.steam.service.member.MemberLoginService;
 import com.steam.service.member.MemberSignUpService;
+import com.steam.service.product.ProductSearchingService;
+
 
 @Controller
 public class StoreController {
@@ -21,10 +26,7 @@ public class StoreController {
 	LoginStatusDto loginStatusDto;
 	
 	@Autowired
-	MemberLoginService mLoginS;
-	
-	@Autowired
-	MemberSignUpService mSignUpS;
+	ProductSearchingService pSearchingS;
 		
 	@GetMapping("/news")
 	public String news() {
@@ -43,7 +45,10 @@ public class StoreController {
 	
 	@GetMapping("/")
 	public String root(Model model) {
+		List<ProductDto> list = pSearchingS.selectProductList();
 		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+		model.addAttribute("productList", list);
+		
 		return "root";
 	}
 	

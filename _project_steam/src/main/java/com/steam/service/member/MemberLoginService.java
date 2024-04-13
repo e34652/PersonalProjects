@@ -23,7 +23,8 @@ public class MemberLoginService {
         
 		
 		MemberDto mDto = mMapper.selectMemberByEmail(email);
-		if (email != null && pw != null && mDto != null) {
+		System.out.println(mDto);
+		if (mDto != null && email != null && pw != null && mDto.getEmail() != null && mDto.getPassword() != null) {
 			if (mDto.getEmail().equals(email) && mDto.getPassword().equals(pw)) {
 				loginStat.setLoginStatus("member");
 				if(mDto.getAuthority().equals("admin")) {

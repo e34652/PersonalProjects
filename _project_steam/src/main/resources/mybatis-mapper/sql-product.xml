@@ -28,6 +28,13 @@
 		WHERE product_num = #{num}
 	</select>
 	
+	<select id="selectIntroductionByNum"
+		resultMap="product" parameterType="long">
+		SELECT product_simple, product_detail
+		FROM product_tb
+		WHERE product_num = #{num}
+	</select>
+	
 	<select id="selectProductByGenre"
 		resultMap="product" parameterType="String">
 		SELECT *
@@ -52,7 +59,7 @@
 		INSERT INTO product_tb (
 		product_name,
 		product_genre,
-		product_releaseDate,
+		product_releasedate,
 		product_price,
 		product_simple,
 		product_detail
@@ -60,7 +67,7 @@
 		VALUES (
 		#{name},
 		#{genre},
-		#{releaseDate},
+		#{releasedate},
 		#{price},
 		#{simple},
 		#{detail}
@@ -72,8 +79,17 @@
 		SET
 		product_name = #{name},
 		product_genre = #{genre},
-		product_releaseDate = #{releaseDate},
+		product_releasedate = #{releasedate},
 		product_price = #{price},
+		product_simple = #{simple},
+		product_detail = #{detail}
+		WHERE 
+		product_num = #{num}
+	</update>
+	
+	<update id="updateIntroduction" parameterType="com.steam.model.ProductDto">
+		UPDATE product_tb
+		SET
 		product_simple = #{simple},
 		product_detail = #{detail}
 		WHERE 

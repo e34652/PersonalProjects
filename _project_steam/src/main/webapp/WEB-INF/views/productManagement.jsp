@@ -9,6 +9,30 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <title>로그인</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
+  <link
+      href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script
+      type="text/javascript"
+      src="    https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"
+    ></script>
     <link
       href="https://community.cloudflare.steamstatic.com/public/shared/css/motiva_sans.css?v=GfSjbGKcNYaQ&amp;l=koreana&amp;_cdn=cloudflare"
       rel="stylesheet"
@@ -51,30 +75,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     />
     <link href="css/management.css" rel="stylesheet" type="text/css" />
     <link href="css/managementForm.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-
-    <script
-      type="text/javascript"
-      src="    https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"
-    ></script>
+  
     <script type="text/javascript">
       VALVE_PUBLIC_PATH =
         "https:\/\/community.cloudflare.steamstatic.com\/public\/";
@@ -99,12 +100,14 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       type="text/javascript"
       src="https://community.cloudflare.steamstatic.com/public/shared/javascript/shared_global.js?v=WVkjW4cQ29y0&amp;l=koreana&amp;_cdn=cloudflare"
     ></script>
-    <script type="text/javascript" src="js/login.js"></script>
+
+    
+    
   </head>
   <body class="login global responsive_page">
     <div role="banner" id="global_header" data-panel='{"flow-children":"row"}'>
       <div class="content">
-        <div class="logo" style="margin-top: -20px; margin-left: 30px">
+        <div class="logo" style="margin-top: -20px; margin-left: 30px;">
           <span id="logo_holder">
             <a href="/" aria-label="Steam 홈페이지 링크">
               <img
@@ -202,24 +205,30 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             });
           });
         </script>
-        <div id="global_actions">
-          <c:if test="${loginStatus eq 'admin'}">
-            <a href="/productManagement">회원관리 | </a>
-            <a href="/productManagement">상품관리 | </a>
-          </c:if>
-          <c:choose>
-            <c:when
-              test="${loginStatus eq 'product' || loginStatus eq 'admin'}"
-            >
-              <a href="/logout">로그아웃</a>
-            </c:when>
-            <c:otherwise>
-              <a class="global_action_link" href="/loginForm">로그인</a>
-              &nbsp;|&nbsp;
-              <a class="global_action_link" href="/loginForm">회원가입</a>
-            </c:otherwise>
-          </c:choose>
-        </div>
+<div id="global_actions">
+          <c:if test="${loginStatus eq 'admin'}">		
+					<a href="/memberManagement">회원관리 | </a>
+					<a href="/productManagement">상품관리 | </a>
+				</c:if>
+				<c:choose>
+					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
+						<a href="/logout">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+				     <a
+                  class="global_action_link"
+                  href="/loginForm"
+                  >로그인</a
+                >
+                &nbsp;|&nbsp;
+                <a
+                  class="global_action_link"
+                  href="/loginForm"
+                  >회원가입</a
+                >
+					</c:otherwise>
+				</c:choose>
+				</div>
       </div>
     </div>
     <!-- 글로벌 헤더 끝 -->
@@ -251,10 +260,11 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                   <td>${product.releasedate}</td>
                   <td>
                     <a
-                      id="edit_${product.num}"
                       href="#"
-                      class="btn btn-light edit-button"
-                      >수정</a
+                      class="btn btn-light"
+                      onclick="openEditWindow(this)"
+                      data-product-num="${product.num}"
+                      >열기</a
                     >
                   </td>
                   <td>
@@ -268,13 +278,11 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                   <td>
                     <a
                       id="clickDelete"
-                      href="mDeleteButton?num=${product.num}"
+                      href="pDeleteButton?num=${product.num}"
                       class="btn btn-dark"
                       onclick="return confirm('확인을 누르면 상품 정보가 삭제됩니다')"
                       >삭제</a
                     >
-                    <div id="product_detail"></div>
-                    <div id="product_simple"></div>
                   </td>
                 </tr>
               </c:forEach>
@@ -285,7 +293,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
       <aside>
         <div class="sideForm">
-          <form id="manageForm" method="post" action="mInsertButton">
+          <form id="manageForm" method="post" action="pInsertButton">
             <div class="title">상품관리</div>
             <div class="input-container ic1">
               <label for="product_num" class="placeholder">상품번호</label>
@@ -307,7 +315,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <input
                 id="product_name"
                 class="input"
-                type="name"
+                type="text"
                 placeholder=""
                 name="name"
               />
@@ -320,12 +328,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <br /><br />
               <select class="select" id="product_genre" name="genre">
                 <option selected value="none">장르선택</option>
-                <option value="product">액션</option>
-                <option value="admin">시뮬레이션</option>
-                <option value="admin">어드벤처</option>
-                <option value="admin">롤플레잉</option>
-                <option value="admin">스포츠</option>
-                <option value="admin">전략</option>
+                <option value="액션">액션</option>
+                <option value="플랫포머">플랫포머</option>
+                <option value="어드벤처">어드벤처</option>
+                <option value="롤플레잉">롤플레잉</option>
+                <option value="캐쥬얼">캐쥬얼</option>
+                <option value="퍼즐">퍼즐</option>
               </select>
               <div class="cut"></div>
               <br />
@@ -351,9 +359,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               >
               <br /><br />
               <input
+              	id="datepicker1"
                 type="text"
                 class="datepicker_input form-control border-2"
-                id="datepicker1"
                 name="releasedate"
                 required
                 placeholder="날짜선택"
@@ -361,35 +369,34 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <div class="cut"></div>
               <br />
             </div>
-
-            <div class="select-container ic2">
-              <br />
-              <label for="product_introduction" class="placeholder">소개</label>
-              <br /><br />
-              <select
-                class="select"
-                id="product_introduction"
-                name="introduction"
-              >
-                <option selected value="none">선택</option>
-                <option value="detail">상세</option>
-                <option value="simple">간략</option>
-              </select>
-              <div class="cut"></div>
-            </div>
             <br />
             <button type="submit" class="submit">제출</button>
           </form>
         </div>
       </aside>
     </main>
+   
+    <script>
+      function openEditWindow(element) {
+        let num = element.getAttribute("data-product-num");
+        let url = "/editIntroduction?num=" + num;
+        let newWindow = window.open(url, "_blank");
+
+        // 새 창 닫힘 이벤트 핸들러 등록
+        newWindow.addEventListener("beforeunload", function() {
+            // 새 창이 닫힐 때 기존 페이지 새로고침
+            location.reload();
+        });
+      }
+    </script>
+
     <script>
       $(document).ready(function () {
         // 특정 버튼을 클릭했을 때
         $("a.edit-button").click(function () {
           var productId = $(this).attr("id").split("_")[1];
           $.ajax({
-            url: "/mEditButton?num=" + productId,
+            url: "/pEditButton?num=" + productId,
             type: "POST", // GET 요청
             dataType: "json", // 응답 데이터 타입은 JSON으로 가정
             success: function (data) {
@@ -399,7 +406,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               $("#product_name").val(data.name);
               $("#product_genre").val(data.genre);
               $("#product_price").val(data.price);
-              $("#product_releasedate").val(data.releasedate);
+              $("#datepicker1").val(data.releasedate);
               $("#product_detail").val(data.detail);
               $("#product_simple").val(data.simple);
             },
@@ -420,7 +427,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           // 회원번호가 비어있지 않으면
           if (productNum.trim() !== "") {
             // 폼의 action 변경
-            this.action = "/mUpdateButton"; // 새로운 action으로 변경
+            this.action = "/pUpdateButton"; // 새로운 action으로 변경
           }
         });
 

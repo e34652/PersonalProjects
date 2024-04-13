@@ -75,7 +75,7 @@
       type="text/javascript"
       src="https://community.cloudflare.steamstatic.com/public/shared/javascript/shared_global.js?v=WVkjW4cQ29y0&amp;l=koreana&amp;_cdn=cloudflare"
     ></script>
-    <script type="text/javascript" src="js/login.js"></script>
+  
     
 
   </head>

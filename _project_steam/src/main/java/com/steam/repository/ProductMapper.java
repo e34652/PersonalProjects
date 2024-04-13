@@ -19,11 +19,16 @@ public interface ProductMapper {
 	
 	ProductDto selectProductByName(String name);
 	
+	ProductDto selectIntroductionByNum(long num);
+	
+	
     List<ProductDto> selectProductList();
     
     void insertProduct(ProductDto product);
     
     void updateProduct(ProductDto product);
+    
+    void updateIntroduction(ProductDto product);
     
     void deleteProduct(long num);
     

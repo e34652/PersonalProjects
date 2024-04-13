@@ -242,7 +242,7 @@
 					
 					<div style="display: flex;"><p><i class="fa fa-arrow-left" aria-hidden="true"></i><a class="forgotId" href="#" >아이디 찾기</a></p> &nbsp;|&nbsp;
 					<p><i class="fa fa-arrow-left" aria-hidden=""></i><a class="forgot" href="#" >비밀번호 찾기</a></p></div>
-				  </div>
+				  </div><br>
 				<div id="loginWarningMessage" style=" text-align: center; color: red;"></div>
 					<input type="submit" class="button" value="로그인">
 				  </form>
@@ -285,16 +285,7 @@
 		</div>
 	  </div>
 
-	<c:if test="${not empty error}">
-		<script>
-			validateLoginResult();		
-			function validateLoginResult() {
-				//필드들의 값을 가져와 변수에 저장
-			    let warning = document.getElementById("loginWarningMessage");
-			    warning.innerHTML = "<br>아이디 또는 비밀번호가 일치하지 않습니다";
-			    }
-		</script>
-	</c:if>
+
 	
 		<c:if test="${loginStatus ne 'visitor'}">
 		<script>
@@ -305,15 +296,24 @@
 		</script>
 	</c:if>
 	
+	
 <script>
 //로그인 폼 null 체크
 
+window.onload = function() {
+    // {error} 값을 가져옴
+    let errorMessage = "${error}";
 
+    // errorMessage가 비어있지 않으면 오류 메시지 출력
+    if (errorMessage.trim().notEmpty()) {
+        document.getElementById("loginWarningMessage").innerHTML = errorMessage;
+    }
+}
 
 function validateLoginForm() {
 	//필드들의 값을 가져와 변수에 저장
     let email = document.getElementById("loginEmail").value;
-    let password = document.getElementById("loginPass").value;
+    let password = document.getElementById("loginPw").value;
    
 
     // 입력 필드의 값이 비어 있는지 확인
@@ -327,23 +327,21 @@ function validateLoginForm() {
     }
 }
 //회원가입 폼 null 체크
-function validateSignUpForm() {
-    let email = document.getElementById("signUpEmail").value;
-    let password = document.getElementById("signUpPw").value;
-    let nickname = document.getElementById("signUpNickname").value;
-    let nationality = document.getElementById("signUpNationality").value;
-    // 기타 필드들의 값을 가져와 변수에 저장
+function validateLoginForm(event) {
+    //필드들의 값을 가져와 변수에 저장
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPw").value;
 
     // 입력 필드의 값이 비어 있는지 확인
-   if (email === "" || password === "" || nickname === "" || nationality === "") {
-        // 경고 메시지 표시
-        document.getElementById("signUpWarningMessage").innerHTML = "모든 필드를 입력해주세요.";
-        return false; // 폼 제출을 막음
-    } else {
-        // 모든 필드가 채워져 있으면 제출 허용
-        return true;
+    if (email === "" || password === "") {
+        // 경고 메시지
+        document.getElementById("loginWarningMessage").innerHTML = "모든 필드를 입력해주세요";
+        event.preventDefault(); // 폼 제출을 막음
     }
 }
+
+// 폼 submit 이벤트에 validateLoginForm 함수 연결
+document.querySelector(".login-form").addEventListener("submit", validateLoginForm);
 
 document.getElementById("loginEmail").addEventListener("input", function(event) {
     var inputValue = event.target.value;

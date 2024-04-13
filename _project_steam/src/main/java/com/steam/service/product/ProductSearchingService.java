@@ -23,6 +23,10 @@ public class ProductSearchingService {
 		ProductDto mDto = pMapper.selectProductByNum(num);
 		return mDto;
 	}
+	public ProductDto selectIntroductionByNum(long num) {
+		ProductDto mDto = pMapper.selectProductByNum(num);
+		return mDto;
+	}
 
 	public ProductDto selectProductByGenre(String genre) {
 		ProductDto mDto = pMapper.selectProductByGenre(genre);

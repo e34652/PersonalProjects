@@ -17,7 +17,11 @@ public class ProductService {
 	public void updateProduct(ProductDto product) {
 		pMapper.updateProduct(product);
 	}
-
+	
+	public void updateIntroduction(ProductDto product) {
+		pMapper.updateIntroduction(product);
+	}
+	
 	public void deleteProduct(long num) {
 		pMapper.deleteProduct(num);
 	}
