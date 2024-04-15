@@ -30,6 +30,7 @@ public class MemberController {
 	public String loginForm(Model model) {
 		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
 		System.out.println(loginStatusDto.getLoginStatus());
+		
 	    return "loginForm"; // 실제 뷰 페이지의 경로를 반환
 	}
 	
@@ -41,10 +42,12 @@ public class MemberController {
 	        
 	        if (email != null && password != null) {
 	            if (mLoginS.setLoginStatus(email, password)) {
+	            	
 	                return "redirect:/";
 	            }
 	        }
 			 model.addAttribute("error", "123");
+			 
 		        return "/loginForm";
 	}
 	
@@ -52,24 +55,22 @@ public class MemberController {
 	public String logout(Model model) {
 		loginStatusDto.setLoginStatus("visitor");
 		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+		
 	    return "redirect:/"; // 실제 뷰 페이지의 경로를 반환
 	}
 	
 	@PostMapping("/signUp")
-	public String signUp(HttpServletRequest request, Model model) {
-			String email = request.getParameter("signUpEmail");
-			String pw = request.getParameter("signUpPw");
-			String nickname = request.getParameter("signUpNickname");
-			String nationality = request.getParameter("signUpNationality");
-			
-			MemberDto mDto = MemberDto.builder()
-					.email(email)
-					.password(pw)
-					.nickname(nickname)
-					.nationality(nationality)
-					.build();
+	public String signUp(MemberDto request) {			
 		
-		int result = mSignUpS.createAccount(mDto);
+			MemberDto mDto = MemberDto.builder()
+					.email(request.getEmail())
+					.password(request.getPassword())
+					.nickname(request.getNickname())
+					.nationality(request.getNationality())
+					.authority("member")
+					.build();
+		mSignUpS.createAccount(mDto);
+		
 		return "redirect:/loginForm"; // 실제 뷰 페이지의 경로를 반환
 	}	
 }

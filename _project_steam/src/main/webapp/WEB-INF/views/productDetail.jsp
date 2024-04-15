@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="responsive" lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#171a21" />
-    <title>game</title>
+    <title>Steam의 100 Funny Cats</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
     <link
@@ -75,7 +77,8 @@
       <div class="responsive_fixonscroll_ctn nonresponsive_hidden"></div>
 
       <div class="responsive_page_content">
-      
+
+        <!-- 전역 헤더를 정의,  data-panel 속성을 사용하여 플로우 자식 요소가 행(row)으로 배치되도록 설정되어 있습니다. 이 코드는 웹 페이지의 상단에 전역적인 헤더를 정의하고, 해당 헤더의 레이아웃 및 속성을 지정합니다. -->
         <div
           role="banner"
           id="global_header"
@@ -85,7 +88,7 @@
             <div class="logo" style="margin-top: -20px; margin-left: 30px;";>
               <span id="logo_holder" >
                 <a
-                  href="root"
+                  href="/"
                   aria-label="Steam 홈페이지 링크"
                 >
                   <img
@@ -99,87 +102,93 @@
             </div>
 
             <div
-              role="navigation"
-              class="supernav_container"
-              aria-label="공통 메뉴"
+          role="navigation"
+          class="supernav_container"
+          aria-label="공통 메뉴"
+        >
+          <a
+            class="menuitem supernav supernav_active"
+            href="https://store.steampowered.com/?snr=1_4_4__global-header"
+            data-tooltip-type="selector"
+            data-tooltip-content=".submenu_store"
+          >
+            상점
+          </a>
+          <div
+            class="submenu_store"
+            style="display: none"
+            data-submenuid="store"
+          >
+            <a
+              class="submenuitem"
+              href="/"
+              >상점 홈</a
             >
-              <a
-                class="menuitem supernav supernav_active"
-                href="https://store.steampowered.com/?snr=1_4_4__global-header"
-                data-tooltip-type="selector"
-                data-tooltip-content=".submenu_store"
-              >
-                상점
-              </a>
-              <div
-                class="submenu_store"
-                style="display: none"
-                data-submenuid="store"
-              >
-                <a
-                  class="submenuitem"
-                  href="https://store.steampowered.com/?snr=1_4_4__global-header"
-                  >상점 홈</a
-                >
-             
-                <a
-                  class="submenuitem"
-                  href="https://steamcommunity.com/my/wishlist/"
-                  >찜 목록</a
-                >
-             
-                <a
-                  class="submenuitem"
-                  href="https://store.steampowered.com/news/?snr=1_4_4__global-header"
-                  >뉴스</a
-                >
-             
-              </div>
-       
-              <a
-                class="menuitem supernav"
-                style="display: block"
-                href="https://steamcommunity.com/"
-                data-tooltip-type="selector"
-                data-tooltip-content=".submenu_community"
-              >
-                커뮤니티
-              </a>
-              <div
-                class="submenu_community"
-                style="display: none"
-                data-submenuid="community"
-              >
-                <a class="submenuitem" href="https://steamcommunity.com/">공지사항</a>
-                <a
-                  class="submenuitem"
-                  href="https://steamcommunity.com/discussions/"
-                  >자유 게시판</a
-                >
-            
-              </div>
 
+            <a
+              class="submenuitem"
+              href="/wishlist"
+              >찜 목록</a
+            >
 
-              <a
-                class="menuitem supernav"
-                style="display: block"
-                href="/mypage"
-                data-tooltip-type="selector"
-                data-tooltip-content=".submenu_mypage"
-              >
-                마이페이지
-              </a>
-              <div
-                class="submenu_mypage"
-                style="display: none"
-                data-submenuid="mypage"
-              >
-              <a class="submenuitem" href="https://steamcommunity.com/discussions/">내 게임</a>
-              <a class="submenuitem" href="https://steamcommunity.com/">주문 조회</a>
-              <a class="submenuitem" href="https://steamcommunity.com/">계정 정보</a>
-              <a class="submenuitem" href="https://steamcommunity.com/">설정</a>
-              </div>
-            </div>
+            <a
+              class="submenuitem"
+              href="/news"
+              >소식</a
+            >
+          </div>
+
+          <a
+            class="menuitem supernav"
+            style="display: block"
+            href="/community"
+            data-tooltip-type="selector"
+            data-tooltip-content=".submenu_community"
+          >
+            커뮤니티
+          </a>
+          <div
+            class="submenu_community"
+            style="display: none"
+            data-submenuid="/community"
+          >
+            <a class="submenuitem" href="/noticeForum"
+              >공지사항</a
+            >
+            <a
+              class="submenuitem"
+              href="generalForum"
+              >자유 게시판</a
+            >
+          </div>
+
+          <a
+            class="menuitem supernav"
+            style="display: block"
+            href="/myPage"
+            data-tooltip-type="selector"
+            data-tooltip-content=".submenu_mypage"
+          >
+            마이페이지
+          </a>
+          <div
+            class="submenu_mypage"
+            style="display: none"
+            data-submenuid="mypage"
+          >
+            <a
+              class="submenuitem"
+              href="/myGames"
+              >내 게임</a
+            >
+            <a class="submenuitem" href="/myOrders"
+              >주문 조회</a
+            >
+            <a class="submenuitem" href="/myInfo"
+              >계정 정보</a
+            >
+          </div>
+        </div>
 
             <!-- 마우스를 가져다 대면 툴팁이 펼쳐짐 -->
             <script type="text/javascript">
@@ -210,51 +219,117 @@
                 id="global_action_menu"
                 aria-label="계정 메뉴"
               >
-                <a
-                  class="header_installsteam_btn header_installsteam_btn_green"
-                  href="https://store.steampowered.com/about/?snr=1_4_4__global-header"
-                >
-                  <div class="header_installsteam_btn_content">설치</div>
-                </a>
-
-                <a
+              <c:if test="${loginStatus eq 'admin'}">		
+					<a href="/memberManagement">회원관리 | </a>
+					<a href="/productManagement">상품관리 | </a>
+				</c:if>
+				<c:choose>
+					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
+						<a href="/logout">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+				     <a
                   class="global_action_link"
-                  href="https://store.steampowered.com/login/?redir=&redir_ssl=1&snr=1_4_4__global-header"
+                  href="/loginForm"
                   >로그인</a
                 >
                 &nbsp;|&nbsp;
-                <span
-                  class="pulldown global_action_link"
-                  id="language_pulldown"
-                  onclick="ShowMenu( this, 'language_dropdown', 'right' );"
-                  >언어</span
+                <a
+                  class="global_action_link"
+                  href="/loginForm"
+                  >회원가입</a
                 >
-                <div
-                  class="popup_block_new"
-                  id="language_dropdown"
-                  style="display: none"
-                >
-                  <div class="popup_body popup_menu">
-                    <a
-                      class="popup_menu_item tight"
-                      href="?l=schinese"
-                      onclick="ChangeLanguage( 'schinese' ); return false;"
-                      >한국어</a
-                    >
-              
-            
-                    <a
-                      class="popup_menu_item tight"
-                      href="?l=english"
-                      onclick="ChangeLanguage( 'english' ); return false;"
-                      >English</a
-                    >
-       
-                  </div>
-                </div>
+					</c:otherwise>
+				</c:choose>
+           
               </div>
             </div>
           </div>
+          <!-- 글로벌 헤더 끝 -->
+        </div>
+              <div class="home_page_content">
+                <div
+                  id="store_header"
+                  role="navigation"
+                  aria-label="상점 메뉴"
+                  class=""
+                >
+                  <div class="content">
+                    <div id="store_controls">
+                      <div class="cart_status_flex" id="cart_status_data">
+                        <div
+                          data-featuretarget="shoppingcart-count-widget"
+                          data-props='{"count":0}'
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div id="store_nav_area">
+                      <div class="store_nav_leftcap"></div>
+                      <div class="store_nav_bg">
+                        <div
+                          class="store_nav"
+                          data-panel='{"flow-children":"row"}'
+                        >
+                          <div
+                            class="tab flyout_tab"
+                            id="foryou_tab"
+                            data-flyout="foryou_flyout"
+                            data-flyout-align="left"
+                            data-flyout-valign="bottom"
+                            data-flyout-delay="300"
+                            data-panel='{"focusable":true}'
+                          >
+                            <span class="pulldown">
+                              <a
+                                class="pulldown_desktop"
+                                href="/"
+                                >상점 홈</a
+                              >
+                             
+                          </div>
+                          
+
+                          <div class="search_flex_spacer"></div>
+                          <div class="search_area">
+                            <div id="store_search">
+                              <form
+                                id="searchform"
+                                name="searchform"
+                                method="get"
+                                action="search"
+                                role="search"
+                              >
+                                <div class="searchbox">
+                                  <input
+                                    id="store_nav_search_term"
+                                    name="term"
+                                    type="search"
+                                    class="default"
+                                    placeholder="검색하기"
+                                    size="22"
+                                    autocomplete="off"
+                                    maxlength="64"
+                                  />
+                                  <a
+                                    href="#"
+                                    id="store_search_link"
+                                    onclick="var $Form = $J(this).parents('form'); $Form.submit(); return false;"
+                                    aria-label="Steam 검색"
+                                    ><img
+                                      src="https://store.akamai.steamstatic.com/public/images/blank.gif"
+                                      alt=""
+                                  /></a>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="store_nav_rightcap"></div>
+                    </div>
+                  </div>
+                </div>
           <!-- 글로벌 헤더 끝 -->
         </div>
        
@@ -326,26 +401,25 @@
                           <div class="grid_content">
                             <a
                               href="https://store.steampowered.com/developer/100CozyGames?snr=1_5_9__400"
-                              >100 Cozy Games</a
+                              >개발자 컬럼 추가하기</a
                             >
                           </div>
                           <div class="grid_label">배급사</div>
                           <div class="grid_content">
                             <a
                               href="https://store.steampowered.com/publisher/100CozyGames?snr=1_5_9__400"
-                              >100 Cozy Games</a
+                              >배급사 컬럼 추가하기</a
                             >
                           </div>
 
                           <div class="grid_label grid_date">출시일</div>
                           <div class="grid_content grid_date">
-                            2024년 4월 2일
+                           ${product.releasedate}
                           </div>
                         </div>
                       </div>
                       <div class="game_description_snippet">
-                       고양이로 가득한 재미있는 테마의
-                    장소에서 가장 귀여운 모험에 참여하세요!  
+                       ${product.simple}
                       </div>
 
                       <div class="glance_ctn_responsive_left">
@@ -354,7 +428,7 @@
                             class="user_reviews_summary_row"
                             onclick="window.location='#app_reviews_hash'"
                             style="cursor: pointer"
-                            data-tooltip-html="이 게임에 대한 사용자 평가 82개 중 97% 가 긍정적입니다."
+                            data-tooltip-html="이 게임에 대한 사용자 평가 {댓글 평가 count 수}개 중 {긍정 / count * 100}%  가 긍정적입니다."
                             itemprop="aggregateRating"
                             itemscope
                             itemtype="http://schema.org/AggregateRating"
@@ -364,14 +438,13 @@
                               <span
                                 class="game_review_summary positive"
                                 itemprop="description"
-                                >매우 긍정적</span
+                                >if문으로 긍정 / count*100 결과에 따라 70긍정 80매우 90압도</span
                               >
-                              <span class="responsive_hidden"> (82) </span>
+                              <span class="responsive_hidden"> 평가 개수 </span>
                               <span
                                 class="nonresponsive_hidden responsive_reviewdesc"
                               >
-                                - 이 게임에 대한 사용자 평가 82개 중 97% 가
-                                긍정적입니다.
+                                - "이 게임에 대한 사용자 평가 {댓글 평가 count 수}개 중 {긍정 / count * 100}%  가 긍정적입니다."
                               </span>
 
                               <!-- microdata -->
@@ -382,7 +455,7 @@
 
                         <div class="release_date">
                           <div class="subtitle column">출시일:</div>
-                          <div class="date">2024년 4월 2일</div>
+                          <div class="date">{product.releasedate}</div>
                         </div>
 
                         <div class="dev_row">
@@ -390,7 +463,7 @@
                           <div class="summary column" id="developers_list">
                             <a
                               href="https://store.steampowered.com/developer/100CozyGames?snr=1_5_9__2000"
-                              >100 Cozy Games</a
+                              >{개발자 컬럼 추가}</a
                             >
                           </div>
                         </div>
@@ -400,7 +473,7 @@
                           <div class="summary column">
                             <a
                               href="https://store.steampowered.com/publisher/100CozyGames?snr=1_5_9__2000"
-                              >100 Cozy Games</a
+                              >{배급사 컬럼 추가}</a
                             >
                           </div>
                         </div>
@@ -465,7 +538,7 @@
                             <div class="subtitle column all">모든 평가</div>
                             <div class="summary column">
                               <span class="game_review_summary positive"
-                                >매우 긍정적</span
+                                >{평균내서 조건문}</span
                               >
                               <span class="responsive_reviewdesc_short">
                                 (?/?)&nbsp;<span class="desc_short"
@@ -479,10 +552,160 @@
                       <div style="clear: both"></div>
                     </div>
                   </div>
+<%-- <div data-panel="{&quot;maintainX&quot;:true,&quot;flow-children&quot;:&quot;column&quot;}" class="leftcol">
+					<div class="highlight_ctn">
 
-                  <div>
-         여기에 게임 스크린샷 하나
-                  </div>
+                                                    <div class="highlight_overflow">
+                                <div id="highlight_player_area">
+                                    <div class="highlight_player_area_spacer">
+                                        <img src="https://store.cloudflare.steamstatic.com/public/images/game/game_highlight_image_spacer.gif">
+                                    </div>
+                                                                                                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_player_item highlight_movie" id="highlight_movie_256706951" style="display: none;"
+												 data-video-title=""
+												 data-video-category=""
+												 data-webm-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie480.webm?t=1516898311"
+												 data-webm-hd-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie_max.webm?t=1516898311"
+												 data-mp4-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie480.mp4?t=1516898311"
+												 data-mp4-hd-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie_max.mp4?t=1516898311"
+												 data-poster="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie.293x165.jpg?t=1516898311">
+                                            </div>
+                                                                            
+                                                                                                                <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1ad297c2044cdcf450ee83e56350cafb590da755.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_4b0f0222341b64a37114033aca9994551f27c161.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1012b11ad364ad6c138a25a654108de28de56c5f.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1098b655a622720cfd549b104736a4eca8948100.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1098b655a622720cfd549b104736a4eca8948100.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1098b655a622720cfd549b104736a4eca8948100.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_3140f6f87aa74c20e142c36d74691f930eda88d5.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_e0159d08620e917e632788c960d9593e5e7f431c.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_152d7e5459c7d6d676ab837abe4355907757ae2d.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_726b2d2cd47cfd785c1aed73d65509037c822495.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" style="display: none;">
+                                            <div class="screenshot_holder">
+                                                <a class="highlight_screenshot_link" data-screenshotid="ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.1920x1080.jpg?t=1701818058" target="_blank" rel="">
+                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
+                                                </a>
+                                            </div>
+                                        </div>
+                                                                        <script type="text/javascript">
+                                                                                var rgScreenshotURLs = {"ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1ad297c2044cdcf450ee83e56350cafb590da755_SIZE_.jpg?t=1701818058","ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb_SIZE_.jpg?t=1701818058","ss_4b0f0222341b64a37114033aca9994551f27c161.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_4b0f0222341b64a37114033aca9994551f27c161_SIZE_.jpg?t=1701818058","ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1012b11ad364ad6c138a25a654108de28de56c5f_SIZE_.jpg?t=1701818058","ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8_SIZE_.jpg?t=1701818058","ss_1098b655a622720cfd549b104736a4eca8948100.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1098b655a622720cfd549b104736a4eca8948100_SIZE_.jpg?t=1701818058","ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf_SIZE_.jpg?t=1701818058","ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_3140f6f87aa74c20e142c36d74691f930eda88d5_SIZE_.jpg?t=1701818058","ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_e0159d08620e917e632788c960d9593e5e7f431c_SIZE_.jpg?t=1701818058","ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_152d7e5459c7d6d676ab837abe4355907757ae2d_SIZE_.jpg?t=1701818058","ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_726b2d2cd47cfd785c1aed73d65509037c822495_SIZE_.jpg?t=1701818058","ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa_SIZE_.jpg?t=1701818058"};
+                                    </script>
+                                </div>
+                                                                <div id="highlight_strip">
+                                    <div data-panel="{&quot;maintainY&quot;:true,&quot;flow-children&quot;:&quot;row&quot;}"  id="highlight_strip_scroll" style="width: 1562px;">
+                                        <div class="highlight_selector"></div>
+
+                                        											<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_movie ttip" data-tooltip-text="" id="thumb_movie_256706951" >
+												<img class="movie_thumb" src="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie.184x123.jpg?t=1516898311">
+												<div class="highlight_movie_marker"></div>
+											</div>
+											
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1ad297c2044cdcf450ee83e56350cafb590da755.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_4b0f0222341b64a37114033aca9994551f27c161.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1012b11ad364ad6c138a25a654108de28de56c5f.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1098b655a622720cfd549b104736a4eca8948100.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1098b655a622720cfd549b104736a4eca8948100.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_3140f6f87aa74c20e142c36d74691f930eda88d5.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_e0159d08620e917e632788c960d9593e5e7f431c.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_152d7e5459c7d6d676ab837abe4355907757ae2d.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_726b2d2cd47cfd785c1aed73d65509037c822495.116x65.jpg?t=1701818058">
+											</div>
+																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" >
+												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.116x65.jpg?t=1701818058">
+											</div>
+										
+                                                                            </div>
+                                </div>--%>
                   <div style="clear: both"></div>
                 </div>
               </div>
@@ -508,40 +731,42 @@
 
             <div class="page_content" data-panel="[]">
 
-                <a
-                  class="franchise_notice"
-                  href="https://store.steampowered.com/franchise/100CozyGames?snr=1_5_9__2001"
-                >
-                  <div
-                    class="background_image"
-                    style="
-                      background-image: url('https://clan.cloudflare.steamstatic.com/images/44722778/0be779f6f9878066cd819a0065ee48e3a20618e0.png');
-                    "
-                  ></div>
-                  <div class="franchise_name">
-                    Steam에서 100_Cozy_Games 프랜차이즈를 모두 확인하세요
-                  </div>
-                  <div class="franchise_highlight"></div>
-                </a>
+              
 
                 <div id="game_area_purchase" class="game_area_purchase">
                   <div class="game_area_purchase_game">
                     <div class="game_area_purchase_platform">
                       <span class="platform_img win"></span>
                     </div>
-                    <h1>100 Funny Cats 플레이</h1>
+                    <h1>${product.name} 플레이</h1>
                     <div class="game_purchase_action">
                       <div class="game_purchase_action_bg">
+                        <c:choose>
+                        <c:when test="${product.price == '0'}">  
                         <div class="game_purchase_price price">무료</div>
-
                         <div id="freeGameBtn" class="btn_addtocart">
                           <a
                             class="btn_green_steamui btn_medium"
-                            href="javascript:ShowGotSteamModal('steam://run/2881230', &quot;100 Funny Cats&quot;, '지금 이 게임 플레이' )"
+                            href="/addToCart"
                           >
-                            <span>게임 플레이</span>
+                            <span>장바구니에 추가</span>
                           </a>
                         </div>
+                      </c:when>
+                      <c:otherwise>
+                      <div class="game_purchase_price price">${product.price}</div>
+                        <div class="btn_addtocart">
+                          <a 
+                          data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" 
+                          class="btn_green_steamui btn_medium" 
+                          href="/addToCart;" 
+                          id="btn_add_to_cart_116049">
+							<span>장바구니에 추가</span>
+						  </a>
+
+						</div>
+                      </c:otherwise>
+                    </c:choose>
                       </div>
                     </div>
                   </div>
@@ -566,32 +791,21 @@
                 <div data-featuretarget="events-row"></div>
 
                   <div id="game_area_description" class="game_area_description">
-                    <h2>게임에 대해</h2>
-                    <table>
+                    <table style="border:none">
+                      <th><h2>게임에 대해</h2></th>
+                   
                       <tr>
                         <th>
-                     
-                          <h2 class="bb_tag">
-                          최고의 숨은그림찾기 게임인 100개의 재미있는 고양이
-                          </h2>
-                          <br />고양이로 가득한 재미있는 세상에서 가장 귀여운
-                          모험에 참여하세요! 게임 곳곳에 숨겨진 100마리의
-                          사랑스러운 고양이를 찾기 위한 퀘스트를 시작하면서
-                          서커스 테마의 매력적인 손으로 그린 아트워크를
-                          탐험하세요.
-                          <h2 class="bb_tag">🐈🕵️‍♂️ 모두 찾을 수 있나요? 🕵️‍♂️🐈</h2>
-                          <img
-                            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2881230/extras/600x200.png?t=1711990813"
-                          />
+              ${product.detail}
                         </th>
                       </tr>
                     </table>
                   </div>
                 </div>
-    </div>
+    
 
               <div style="clear: both"></div>
-            </div>
+            
 
             <div class="review_ctn">
               <div class="page_content">
@@ -702,212 +916,24 @@
               </div>
             </div>
           </div>
-
-          <div
-            data-panel='{"maintainY":true,"bFocusRingRoot":true,"onMoveDown":"BlockMovement","onMoveUp":"BlockMovement","flow-children":"column"}'
-            id="purchaseOptionsContentTablet"
-            class="purchase_options_content_tablet"
-            style="display: block"
-          >
-            <!-- game_area_purchase goes here -->
+        </div>
+<!-- footer 영역 -->
+      <!-- Footer -->
+      <div id="footer_spacer" class="small_footer"></div>
+      <div id="footer" class="small_footer">
+        
+        <div class="footer_content">
+          <div class="rule"></div>
+       
+          <div id="footer_text" data-panel='{"flow-children":"row"}'>
+            
+            <div style="margin-top:10px">
+  
+              &copy; 2024 Valve Corporation. All rights reserved. <br/>
+              모든 상표는 미국 및 기타 국가에서 해당하는 소유자의 재산입니다.
+  
           </div>
-        </div>
-
-        <div class="rule"></div>
-        <div id="footer_logo_steam">
-          <img
-            src="https://store.cloudflare.steamstatic.com/public/images/v6/logo_steam_footer.png"
-            alt="Valve Software"
-            border="0"
-          />
-        </div>
-
-        <div id="footer_logo">
-          <a href="http://www.valvesoftware.com" target="_blank" rel=""
-            ><img
-              src="https://store.cloudflare.steamstatic.com/public/images/footerLogo_valve_new.png"
-              alt="Valve Software"
-              border="0"
-          /></a>
-        </div>
-        <div id="footer_text" data-panel='{"flow-children":"row"}'>
-          <div>
-            &copy; 2024 Valve Corporation. All rights reserved. 모든 상표는 미국
-            및 기타 국가에서 해당하는 소유자의 재산입니다.
-          </div>
-          <div>
-            부가가치세 포함&nbsp;&nbsp;
-
-            <a
-              href="https://store.steampowered.com/privacy_agreement/?snr=1_44_44_"
-              target="_blank"
-              rel=""
-              >개인정보 보호정책</a
-            >
-            &nbsp; | &nbsp;
-            <a
-              href="https://store.steampowered.com/legal/?snr=1_44_44_"
-              target="_blank"
-              rel=""
-              >사용권</a
-            >
-            &nbsp; | &nbsp;
-            <a
-              href="https://store.steampowered.com/subscriber_agreement/?snr=1_44_44_"
-              target="_blank"
-              rel=""
-              >Steam 이용 약관</a
-            >
-            &nbsp; | &nbsp;
-            <a
-              href="https://store.steampowered.com/steam_refunds/?snr=1_44_44_"
-              target="_blank"
-              rel=""
-              >환불</a
-            >
-            &nbsp; | &nbsp;
-            <a
-              href="https://store.steampowered.com/account/cookiepreferences/?snr=1_44_44_"
-              target="_blank"
-              rel=""
-              >쿠키</a
-            >
-
-            <div style="clear: left"></div>
-            <br />
-
-            <div class="rule"></div>
-
-            <div class="valve_links" data-panel='{"flow-children":"row"}'>
-              <a
-                href="http://www.valvesoftware.com/about"
-                target="_blank"
-                rel=""
-                >Valve 정보</a
-              >
-              &nbsp; | &nbsp;<a
-                href="http://www.valvesoftware.com"
-                target="_blank"
-                rel=""
-                >채용 정보</a
-              >
-              &nbsp; | &nbsp;<a
-                href="http://www.steampowered.com/steamworks/"
-                target="_blank"
-                rel=""
-                >Steamworks</a
-              >
-              &nbsp; | &nbsp;<a
-                href="https://partner.steamgames.com/steamdirect"
-                target="_blank"
-                rel=""
-                >Steam 배포</a
-              >
-              &nbsp; | &nbsp;<a
-                href="https://help.steampowered.com/ko/?snr=1_44_44_"
-                >지원</a
-              >
-              &nbsp; | &nbsp;<a
-                href="https://store.steampowered.com/digitalgiftcards/?snr=1_44_44_"
-                target="_blank"
-                rel=""
-                >기프트 카드</a
-              >
-              &nbsp; | &nbsp;<a
-                href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.facebook.com%2FSteam"
-                target="_blank"
-                rel=" noopener"
-                ><img
-                  src="https://store.cloudflare.steamstatic.com/public/images/ico/ico_facebook.png"
-                  alt="Facebook"
-                />
-                Steam</a
-              >
-              &nbsp; | &nbsp;<a
-                href="http://twitter.com/steam"
-                target="_blank"
-                rel=""
-                ><img
-                  src="https://store.cloudflare.steamstatic.com/public/images/ico/ico_twitter.png"
-                  alt="X"
-                />
-                @steam</a
-              >
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript">
-          $J(function () {
-            ReplaceDynamicLink(
-              "dynamiclink_0",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2687200\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_1",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2775830\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_2",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2776910\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_3",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2827560\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_4",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2845250\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_5",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2845270\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_6",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2854290\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_7",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2687190\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_8",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2667970\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_9",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2743080\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_10",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2776810\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_11",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2803000\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_12",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2803010\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_13",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2845260\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_14",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2881230\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_15",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2827560\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-            ReplaceDynamicLink(
-              "dynamiclink_16",
-              '<iframe src="https:\/\/store.steampowered.com\/widget\/2908220\/?dynamiclink=1" frameborder="0" width="100%" height="190"><\/iframe>'
-            );
-          });
-        </script>
+      </div>
       </div>
       <!-- responsive_page_content -->
     </div>

@@ -37,8 +37,11 @@ public class MemberManagementController {
 			List<MemberDto> mList = msService.selectMemberList();
 			model.addAttribute("MemberList" , mList);
 			model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+			
 			return "memberManagement"; // 실제 뷰 페이지의 경로를 반환
+			
 		}else {
+			
 			return "redirect:/";
 		}
 	}
@@ -55,34 +58,40 @@ public class MemberManagementController {
 	@ResponseBody
 	public MemberDto clickMemberEdit(@RequestParam("num") long num, Model model) {
 	    MemberDto member = msService.selectMemberByNum(num);
+	    
 	    return member;
 	}
 	
 	@PostMapping("/mUpdateButton")
-	public String clickMemberUpdate(
-			@RequestParam("num") long num,
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("nickname") String nickname, 
-			@RequestParam("authority") String authority,
-			@RequestParam("nationality") String nationality,
-			Model model) {
-		MemberDto member = MemberDto.builder().num(num).email(email).password(password).nickname(nickname).authority(authority).nationality(nationality).build(); 
+	public String clickMemberUpdate(MemberDto request) {
+		
+		MemberDto member = MemberDto.builder().
+				num(request.getNum()).
+				email(request.getEmail()).
+				password(request.getPassword()).
+				nickname(request.getNickname()).
+				authority(request.getAuthority()).
+				nationality(request.getNationality()).
+				build(); 
+		
 		log.info(member.toString());
 		mService.updateMember(member);
+		
 		return "redirect:/memberManagement";
 	}
 	
 	@PostMapping("/mInsertButton")
-	public String clickMemberInsert(
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("nickname") String nickname, 
-			@RequestParam("authority") String authority,
-			@RequestParam("nationality") String nationality,
-			Model model) {
-		MemberDto member = MemberDto.builder().email(email).password(password).nickname(nickname).authority(authority).nationality(nationality).build();
+	public String clickMemberInsert(MemberDto request) {
+		MemberDto member = MemberDto.builder().
+				
+				email(request.getEmail()).
+				password(request.getPassword()).
+				nickname(request.getNickname()).
+				authority(request.getAuthority()).
+				nationality(request.getNationality()).
+				build(); 
 		mService.insertMember(member);
+		
 		return "redirect:/memberManagement";
 	}
 }

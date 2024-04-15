@@ -13,10 +13,10 @@
     <form id="myForm" action="/submitIntroduction" method="post">
               <h2>detail</h2>
               <input type="hidden" name="num" value="${num}"/>
-        <textarea name="detail" rows="40" cols="100"></textarea>
+        <textarea name="detail" rows="40" cols="100">${detail}</textarea>
         <br />
               <h2>simple</h2>
-        <textarea name="simple" rows="20" cols="100"></textarea>
+        <textarea name="simple" rows="20" cols="100">${simple}</textarea>
         <button type="submit">제출</button>
         
     </form>

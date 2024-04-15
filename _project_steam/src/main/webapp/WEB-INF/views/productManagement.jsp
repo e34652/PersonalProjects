@@ -305,6 +305,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 readonly
                 placeholder="상품번호 미입력시 제출 = 삽입"
                 name="num"
+                value = "0"
               />
               <div class="cut"></div>
               <br />
@@ -428,6 +429,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           if (productNum.trim() !== "") {
             // 폼의 action 변경
             this.action = "/pUpdateButton"; // 새로운 action으로 변경
+          }        
+          if(productNum.trim() == 0){
+          	this.action = "/pInsertButton";
           }
         });
 

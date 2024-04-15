@@ -266,6 +266,7 @@
             readonly 
             placeholder="회원번호 미입력시 제출 = 삽입" 
             name="num"
+            value= 0
             />
             <div class="cut"></div>
             <br />
@@ -379,11 +380,13 @@ $(document).ready(function() {
 document.getElementById("manageForm").addEventListener("submit", function(event) {
     // input 요소의 값 가져오기
     var memberNum = document.getElementById("member_num").value;
-    
     // 회원번호가 비어있지 않으면
     if (memberNum.trim() !== "") {
         // 폼의 action 변경
         this.action = "/mUpdateButton"; // 새로운 action으로 변경
+        if(memberNum.trim() == 0){
+        	this.action = "/mInsertButton";
+        }
     }
 });
 </script>

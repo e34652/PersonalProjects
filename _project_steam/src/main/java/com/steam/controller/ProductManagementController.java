@@ -49,6 +49,7 @@ public class ProductManagementController {
 		model.addAttribute("simple", pDto.getSimple());
 		model.addAttribute("detail", pDto.getDetail());
 		model.addAttribute("num", num);
+		
 		return "editIntroduction";
 	}
 
@@ -61,12 +62,12 @@ public class ProductManagementController {
 		ProductDto pDto = ProductDto.builder().simple(simple).detail(detail).num(num).build();
 		pService.updateIntroduction(pDto);
 		model.addAttribute("close","true");
+		
 		return "editIntroduction";
 	}
 
 	@GetMapping("/pDeleteButton")
 	public String clickProductDelete(@RequestParam("num") long num, Model model) {
-
 		pService.deleteProduct(num);
 
 		return "redirect:/productManagement";
@@ -76,42 +77,36 @@ public class ProductManagementController {
 	@ResponseBody
 	public ProductDto clickProductEdit(@RequestParam("num") long num, Model model) {
 		ProductDto product = psService.selectProductByNum(num);
+		
 		return product;
 	}
 
 	@PostMapping("/pUpdateButton")
-	public String clickProductUpdate(
-			@RequestParam("num") long num, 
-			@RequestParam("name") String name,
-			@RequestParam("genre") String genre, 
-			@RequestParam("price") int price,
-			@RequestParam("releasedate") String releasedate, 
-			Model model) {
+	public String clickProductUpdate(ProductDto request, Model model) {
+		
 		ProductDto product = ProductDto.builder().
-				num(num).
-				name(name).
-				genre(genre).
-				price(price).
-				releasedate(releasedate).build();
+				num(request.getNum()).
+				name(request.getName()).
+				genre(request.getGenre()).
+				price(request.getPrice()).
+				releasedate(request.getReleasedate()).build();
 		log.info(product.toString());
 		pService.updateProduct(product);
+		
 		return "redirect:/productManagement";
 	}
 
 	@PostMapping("/pInsertButton")
-	public String clickProductInsert(
-			@RequestParam("name") String name, 
-			@RequestParam("genre") String genre,
-			@RequestParam("price") int price, 
-			@RequestParam("releasedate") String releasedate){
+	public String clickProductInsert(ProductDto request){
 
 		ProductDto product = ProductDto.builder().
-				name(name).
-				genre(genre).
-				price(price).
-				releasedate(releasedate).build();
+				name(request.getName()).
+				genre(request.getGenre()).
+				price(request.getPrice()).
+				releasedate(request.getReleasedate()).build();
 		log.info(product.getGenre());
 		pService.insertProduct(product);
+		
 		return "redirect:/productManagement";
 	}
 

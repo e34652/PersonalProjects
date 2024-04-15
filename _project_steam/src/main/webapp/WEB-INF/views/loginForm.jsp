@@ -251,10 +251,10 @@
 					<!-- TABS CONTENT SIGNUP -->
 				<div id="signup-tab-content">
 				  <form class="signup-form" action="/signUp" method="post" onsubmit="return validateSignUpForm()">
-					<input type="email" class="input" id="signUpEmail" name="signUpEmail" autocomplete="off" placeholder="Email">					
-					<input type="password" class="input" id="signUpPw" name="signUpPw" autocomplete="off" placeholder="Password">
-					<input type="text" class="input" id="signUpNickname" name="signUpNickname" autocomplete="off" placeholder="Nickname">
-					<div class="select"><select id="signUpNationality" name="signUpNationality" >
+					<input type="email" class="input" id="signUpEmail" name="email" autocomplete="off" placeholder="Email">					
+					<input type="password" class="input" id="signUpPw" name="password" autocomplete="off" placeholder="Password">
+					<input type="text" class="input" id="signUpNickname" name="nickname" autocomplete="off" placeholder="Nickname">
+					<div class="select"><select id="signUpNationality" name="nationality" >
 								<option selected value=none>Nationality</option>
 								<option value="korean">Korean</option>
 								<option value="chinese">Chinese</option>

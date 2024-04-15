@@ -397,7 +397,7 @@
                 
      
 <c:forEach var="product" items="${productList}">
-<a href="/productDetail%${product.num}" class="tab_item  ">
+<a href="/productDetail?num=${product.num}" class="tab_item  ">
   <div class="tab_item_cap">
     <img class="tab_item_cap_img" src="/img/preview/${product.name}_preview.jpg" id="delayedimage_home_tabs_autoload_2" alt="${product.name}" >
   </div>
