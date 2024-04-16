@@ -409,7 +409,6 @@
       <span class="platform_img win"></span>
       <div class="tab_item_top_tags">
       <span class="top_tag">${product.genre}</span>
-      
       </div>
     </div>
   </div>

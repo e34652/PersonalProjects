@@ -6,9 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#171a21" />
-    <title>Steam의 100 Funny Cats</title>
+    <title>Steam의 ${product.name}</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-
+	
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	  
     <link
       href="https://store.cloudflare.steamstatic.com/public/shared/css/motiva_sans.css?v=2C1Oh9QFVTyK&amp;l=koreana&amp;_cdn=cloudflare"
       rel="stylesheet"
@@ -61,13 +63,14 @@
       type="text/css"
     />
   
-
+  
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript">VALVE_PUBLIC_PATH = "https:\/\/community.cloudflare.steamstatic.com\/public\/";</script><script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/scriptaculous/_combined.js?v=OeNIgrpEF8tL&amp;l=koreana&amp;_cdn=cloudflare&amp;load=effects,controls,slider,dragdrop" ></script>
     <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/global.js?v=EToM5vVWVuDV&amp;l=koreana&amp;_cdn=cloudflare" ></script>
     <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/javascript/jquery-1.11.1.min.js?v=.isFTSRckeNhC&amp;_cdn=cloudflare" ></script>
     <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/shared/javascript/tooltip.js?v=.zYHOpI1L3Rt0&amp;_cdn=cloudflare" ></script>
     <script type="text/javascript" src="https://community.cloudflare.steamstatic.com/public/shared/javascript/shared_global.js?v=WVkjW4cQ29y0&amp;l=koreana&amp;_cdn=cloudflare" ></script>
-
+	
    
   </head>
   <body class="v6 app game_bg application responsive_page">
@@ -381,7 +384,7 @@
                       >
                         <img
                           class="game_header_image_full"
-                          src="https://cdn.cloudflare.steamstatic.com/steam/apps/2881230/header.jpg?t=1711990813"
+                          src="/img/header/${product.name}_header.jpg"
                         />
 
                         <div
@@ -389,7 +392,7 @@
                           style="display: none"
                           class="apphub_AppName"
                         >
-                          100 Funny Cats
+                        ${product.name}
                         </div>
                         <div
                           data-panel='{"type":"PanelGroup"}'
@@ -496,7 +499,7 @@
                           <div
                             data-panel='{"flow-children":"row"}'
                             class="glance_tags popular_tags"
-                            data-appid="2881230"
+                            style="display: flex;"
                           >
                         <a
 						  	  href=""
@@ -552,160 +555,43 @@
                       <div style="clear: both"></div>
                     </div>
                   </div>
-<%-- <div data-panel="{&quot;maintainX&quot;:true,&quot;flow-children&quot;:&quot;column&quot;}" class="leftcol">
-					<div class="highlight_ctn">
+                  
+                  <div id="carouselExampleIndicators" class="carousel slide" style="max-width: 600px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/img/slide/${product.name}_slide1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/slide/${product.name}_slide2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/slide/${product.name}_slide3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/slide/${product.name}_slide4.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/img/slide/${product.name}_slide5.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-                                                    <div class="highlight_overflow">
-                                <div id="highlight_player_area">
-                                    <div class="highlight_player_area_spacer">
-                                        <img src="https://store.cloudflare.steamstatic.com/public/images/game/game_highlight_image_spacer.gif">
-                                    </div>
-                                                                                                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_player_item highlight_movie" id="highlight_movie_256706951" style="display: none;"
-												 data-video-title=""
-												 data-video-category=""
-												 data-webm-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie480.webm?t=1516898311"
-												 data-webm-hd-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie_max.webm?t=1516898311"
-												 data-mp4-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie480.mp4?t=1516898311"
-												 data-mp4-hd-source="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie_max.mp4?t=1516898311"
-												 data-poster="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie.293x165.jpg?t=1516898311">
-                                            </div>
-                                                                            
-                                                                                                                <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1ad297c2044cdcf450ee83e56350cafb590da755.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_4b0f0222341b64a37114033aca9994551f27c161.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1012b11ad364ad6c138a25a654108de28de56c5f.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_1098b655a622720cfd549b104736a4eca8948100.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_1098b655a622720cfd549b104736a4eca8948100.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1098b655a622720cfd549b104736a4eca8948100.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_3140f6f87aa74c20e142c36d74691f930eda88d5.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_e0159d08620e917e632788c960d9593e5e7f431c.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_152d7e5459c7d6d676ab837abe4355907757ae2d.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_726b2d2cd47cfd785c1aed73d65509037c822495.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                            <div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}"  class="highlight_player_item highlight_screenshot" id="highlight_screenshot_ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" style="display: none;">
-                                            <div class="screenshot_holder">
-                                                <a class="highlight_screenshot_link" data-screenshotid="ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" href="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.1920x1080.jpg?t=1701818058" target="_blank" rel="">
-                                                    <img src="https://store.cloudflare.steamstatic.com/public/images/blank.gif">
-                                                </a>
-                                            </div>
-                                        </div>
-                                                                        <script type="text/javascript">
-                                                                                var rgScreenshotURLs = {"ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1ad297c2044cdcf450ee83e56350cafb590da755_SIZE_.jpg?t=1701818058","ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb_SIZE_.jpg?t=1701818058","ss_4b0f0222341b64a37114033aca9994551f27c161.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_4b0f0222341b64a37114033aca9994551f27c161_SIZE_.jpg?t=1701818058","ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1012b11ad364ad6c138a25a654108de28de56c5f_SIZE_.jpg?t=1701818058","ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8_SIZE_.jpg?t=1701818058","ss_1098b655a622720cfd549b104736a4eca8948100.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_1098b655a622720cfd549b104736a4eca8948100_SIZE_.jpg?t=1701818058","ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf_SIZE_.jpg?t=1701818058","ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_3140f6f87aa74c20e142c36d74691f930eda88d5_SIZE_.jpg?t=1701818058","ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_e0159d08620e917e632788c960d9593e5e7f431c_SIZE_.jpg?t=1701818058","ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_152d7e5459c7d6d676ab837abe4355907757ae2d_SIZE_.jpg?t=1701818058","ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_726b2d2cd47cfd785c1aed73d65509037c822495_SIZE_.jpg?t=1701818058","ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg":"https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/504230\/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa_SIZE_.jpg?t=1701818058"};
-                                    </script>
-                                </div>
-                                                                <div id="highlight_strip">
-                                    <div data-panel="{&quot;maintainY&quot;:true,&quot;flow-children&quot;:&quot;row&quot;}"  id="highlight_strip_scroll" style="width: 1562px;">
-                                        <div class="highlight_selector"></div>
-
-                                        											<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_movie ttip" data-tooltip-text="" id="thumb_movie_256706951" >
-												<img class="movie_thumb" src="https://cdn.cloudflare.steamstatic.com/steam/apps/256706951/movie.184x123.jpg?t=1516898311">
-												<div class="highlight_movie_marker"></div>
-											</div>
-											
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1ad297c2044cdcf450ee83e56350cafb590da755.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1ad297c2044cdcf450ee83e56350cafb590da755.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_03bfe6bd5ddac7f747c8d2aa1a4f82cfd53c6dcb.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_4b0f0222341b64a37114033aca9994551f27c161.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_4b0f0222341b64a37114033aca9994551f27c161.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1012b11ad364ad6c138a25a654108de28de56c5f.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1012b11ad364ad6c138a25a654108de28de56c5f.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_1098b655a622720cfd549b104736a4eca8948100.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_1098b655a622720cfd549b104736a4eca8948100.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_0eab901ec5c364aa18225fa608ff9cbcc1f432bf.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_3140f6f87aa74c20e142c36d74691f930eda88d5.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_3140f6f87aa74c20e142c36d74691f930eda88d5.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_e0159d08620e917e632788c960d9593e5e7f431c.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_e0159d08620e917e632788c960d9593e5e7f431c.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_152d7e5459c7d6d676ab837abe4355907757ae2d.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_152d7e5459c7d6d676ab837abe4355907757ae2d.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_726b2d2cd47cfd785c1aed73d65509037c822495.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_726b2d2cd47cfd785c1aed73d65509037c822495.116x65.jpg?t=1701818058">
-											</div>
-																					<div data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" class="highlight_strip_item highlight_strip_screenshot" id="thumb_screenshot_ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.jpg" >
-												<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/504230/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.116x65.jpg?t=1701818058">
-											</div>
-										
-                                                                            </div>
-                                </div>--%>
                   <div style="clear: both"></div>
                 </div>
               </div>
@@ -734,7 +620,7 @@
               
 
                 <div id="game_area_purchase" class="game_area_purchase">
-                  <div class="game_area_purchase_game">
+                  <div class="game_area_purchase_game" >
                     <div class="game_area_purchase_platform">
                       <span class="platform_img win"></span>
                     </div>
@@ -754,14 +640,14 @@
                         </div>
                       </c:when>
                       <c:otherwise>
-                      <div class="game_purchase_price price">${product.price}</div>
-                        <div class="btn_addtocart">
+                      <div class="game_purchase_price price" style="margin-top: -10px;">${product.price}</div>
+                        <div class="btn_addtocart" >
                           <a 
                           data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" 
                           class="btn_green_steamui btn_medium" 
                           href="/addToCart;" 
                           id="btn_add_to_cart_116049">
-							<span>장바구니에 추가</span>
+							<span >장바구니에 추가</span>
 						  </a>
 
 						</div>
@@ -792,7 +678,7 @@
 
                   <div id="game_area_description" class="game_area_description">
                     <table style="border:none">
-                      <th><h2>게임에 대해</h2></th>
+                     <th style="text-align:center;"><h2>게임에 대해</h2></th>
                    
                       <tr>
                         <th>
@@ -938,5 +824,7 @@
       <!-- responsive_page_content -->
     </div>
     <!-- responsive_page_frame -->
+    
+
   </body>
 </html>
