@@ -10,7 +10,7 @@ import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "Cart_tb", uniqueConstraints = @UniqueConstraint(columnNames = { "memberNum", "productNum" }))
+@Table(name = "Cart_tb", uniqueConstraints = @UniqueConstraint(columnNames = {"productNum" }))
 public class Cart {
 
 	@Id
@@ -24,6 +24,4 @@ public class Cart {
 	@Column(name = "productNum", columnDefinition = "bigint")
 	private long product_num;
 	
-	@Column(name = "productCount", columnDefinition = "bigint")
-	private long product_count;
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.steam.repository.CartMapper">
+
+<resultMap id="member" type="com.steam.model.MemberDto">
+    <id property="num" column="member_num"/>
+    <result property="email" column="member_email"/>
+    <result property="password" column="member_password"/>
+    <result property="nickname" column="member_nickname"/>
+    <result property="authority" column="member_authority"/>
+    <result property="regdate" column="member_regdate"/>
+    <result property="nationality" column="member_nationality"/>
+    <!-- 다른 필드들에 대한 매핑 추가 -->
+</resultMap>
+
+<resultMap id="product" type="com.steam.model.ProductDto">
+    <id property="num" column="product_num"/>
+    <result property="name" column="product_name"/>
+    <result property="genre" column="product_genre"/>
+    <result property="price" column="product_price"/>
+    <result property="releasedate" column="product_releasedate"/>
+    <result property="simple" column="product_simple"/>
+    <result property="detail" column="product_detail"/>
+    <!-- 다른 필드들에 대한 매핑 추가 -->
+</resultMap>
+
+<select id="cartlistByMemberNum" parameterType="long" resultMap="product">
+    <![CDATA[
+        SELECT p.product_name, p.product_price
+        FROM product_tb p
+        JOIN cart_tb c ON p.product_num = c.product_num
+        WHERE c.member_num = #{num}
+    ]]>
+</select>
+
+	
+			<insert id="addToCart" parameterType= "long">
+			<![CDATA[
+				INSERT INTO cart_tb(
+				member_num, 
+				product_num
+				)
+				values
+				#{memberNum}
+				#{productNum}
+			]]>
+		</insert>
+
+
+
+	
+</mapper>
