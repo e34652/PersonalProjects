@@ -222,12 +222,12 @@
                 id="global_action_menu"
                 aria-label="계정 메뉴"
               >
-              <c:if test="${loginStatus eq 'admin'}">		
+              <c:if test="${loginInfo.status eq 'admin'}">		
 					<a href="/memberManagement">회원관리 | </a>
 					<a href="/productManagement">상품관리 | </a>
 				</c:if>
 				<c:choose>
-					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
+					<c:when test="${loginInfo.status eq 'member' || loginInfo.status eq 'admin'}">
 						<a href="/logout">로그아웃</a>
 					</c:when>
 					<c:otherwise>
@@ -248,91 +248,6 @@
               </div>
             </div>
           </div>
-          <!-- 글로벌 헤더 끝 -->
-        </div>
-              <div class="home_page_content">
-                <div
-                  id="store_header"
-                  role="navigation"
-                  aria-label="상점 메뉴"
-                  class=""
-                >
-                  <div class="content">
-                    <div id="store_controls">
-                      <div class="cart_status_flex" id="cart_status_data">
-                        <div
-                          data-featuretarget="shoppingcart-count-widget"
-                          data-props='{"count":0}'
-                        ></div>
-                      </div>
-                    </div>
-
-                    <div id="store_nav_area">
-                      <div class="store_nav_leftcap"></div>
-                      <div class="store_nav_bg">
-                        <div
-                          class="store_nav"
-                          data-panel='{"flow-children":"row"}'
-                        >
-                          <div
-                            class="tab flyout_tab"
-                            id="foryou_tab"
-                            data-flyout="foryou_flyout"
-                            data-flyout-align="left"
-                            data-flyout-valign="bottom"
-                            data-flyout-delay="300"
-                            data-panel='{"focusable":true}'
-                          >
-                            <span class="pulldown">
-                              <a
-                                class="pulldown_desktop"
-                                href="/"
-                                >상점 홈</a
-                              >
-                             
-                          </div>
-                          
-
-                          <div class="search_flex_spacer"></div>
-                          <div class="search_area">
-                            <div id="store_search">
-                              <form
-                                id="searchform"
-                                name="searchform"
-                                method="get"
-                                action="search"
-                                role="search"
-                              >
-                                <div class="searchbox">
-                                  <input
-                                    id="store_nav_search_term"
-                                    name="term"
-                                    type="search"
-                                    class="default"
-                                    placeholder="검색하기"
-                                    size="22"
-                                    autocomplete="off"
-                                    maxlength="64"
-                                  />
-                                  <a
-                                    href="#"
-                                    id="store_search_link"
-                                    onclick="var $Form = $J(this).parents('form'); $Form.submit(); return false;"
-                                    aria-label="Steam 검색"
-                                    ><img
-                                      src="https://store.akamai.steamstatic.com/public/images/blank.gif"
-                                      alt=""
-                                  /></a>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="store_nav_rightcap"></div>
-                    </div>
-                  </div>
-                </div>
           <!-- 글로벌 헤더 끝 -->
         </div>
        
@@ -631,21 +546,20 @@
                         <c:when test="${product.price == '0'}">  
                         <div class="game_purchase_price price">무료</div>
                         <div id="freeGameBtn" class="btn_addtocart">
-                          <a
-                            class="btn_green_steamui btn_medium"
-                            href="/addToCart"
-                          >
-                            <span>장바구니에 추가</span>
-                          </a>
+                          <a 
+                          class="btn_green_steamui btn_medium" 
+                          href="/addToCart?productNum=${product.num}&memberNum=${loginInfo.memberNum}" 
+                          id="btn_add_to_cart_116049">
+							<span >장바구니에 추가</span>
+						  </a>
                         </div>
                       </c:when>
                       <c:otherwise>
                       <div class="game_purchase_price price" style="margin-top: -10px;">${product.price}</div>
                         <div class="btn_addtocart" >
-                          <a 
-                          data-panel="{&quot;focusable&quot;:true,&quot;clickOnActivate&quot;:true}" 
+                         <a 
                           class="btn_green_steamui btn_medium" 
-                          href="/addToCart;" 
+                          href="/addToCart?productNum=${product.num}&memberNum=${loginInfo.memberNum}" 
                           id="btn_add_to_cart_116049">
 							<span >장바구니에 추가</span>
 						  </a>

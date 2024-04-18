@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.MemberDto;
 import com.steam.service.member.MemberLoginService;
 import com.steam.service.member.MemberSignUpService;
@@ -18,7 +18,7 @@ import com.steam.service.member.MemberSignUpService;
 public class CommunityController {
 
 	@Autowired
-	LoginStatusDto loginStatusDto;
+	LoginInfoDto loginInfoDto;
 	
 	@Autowired
 	MemberLoginService mLoginS;

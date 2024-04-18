@@ -3,7 +3,7 @@ package com.steam.service.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.MemberDto;
 import com.steam.repository.MemberMapper;
 
@@ -17,7 +17,7 @@ public class MemberLoginService {
 	MemberMapper mMapper;
 	
 	@Autowired
-	LoginStatusDto loginStat;
+	LoginInfoDto loginStat;
 	
 	public boolean setLoginStatus(String email, String pw) {
         
@@ -26,15 +26,16 @@ public class MemberLoginService {
 		System.out.println(mDto);
 		if (mDto != null && email != null && pw != null && mDto.getEmail() != null && mDto.getPassword() != null) {
 			if (mDto.getEmail().equals(email) && mDto.getPassword().equals(pw)) {
-				loginStat.setLoginStatus("member");
+				loginStat.setStatus("member");
+				loginStat.setMemberNum(mDto.getNum());
 				if(mDto.getAuthority().equals("admin")) {
-					loginStat.setLoginStatus("admin");
+					loginStat.setStatus("admin");
 					return true;
 				}
 				return true;
 				}
 		}
-		loginStat.setLoginStatus("visitor");
+		loginStat.setStatus("visitor");
 		return false;
 	}
 }

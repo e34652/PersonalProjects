@@ -181,12 +181,12 @@
           });
         </script>
 <div id="global_actions">
-          <c:if test="${loginStatus eq 'admin'}">		
+          <c:if test="${loginInfo.status eq 'admin'}">		
 					<a href="/memberManagement">회원관리 | </a>
 					<a href="/productManagement">상품관리 | </a>
 				</c:if>
 				<c:choose>
-					<c:when test="${loginStatus eq 'member' || loginStatus eq 'admin'}">
+					<c:when test="${loginInfo.status eq 'member' || loginInfo.status eq 'admin'}">
 						<a href="/logout">로그아웃</a>
 					</c:when>
 					<c:otherwise>

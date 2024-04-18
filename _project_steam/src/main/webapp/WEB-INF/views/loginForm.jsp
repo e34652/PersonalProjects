@@ -287,7 +287,7 @@
 
 
 	
-		<c:if test="${loginStatus ne 'visitor'}">
+		<c:if test="${loginInfo.status ne 'visitor'}">
 		<script>
 			loggedInAlready();		
 			function loggedInAlready() {

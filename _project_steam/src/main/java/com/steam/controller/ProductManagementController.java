@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.ProductDto;
 import com.steam.service.product.ProductSearchingService;
 import com.steam.service.product.ProductService;
@@ -27,15 +27,15 @@ public class ProductManagementController {
 	ProductSearchingService psService;
 
 	@Autowired
-	LoginStatusDto loginStatusDto;
+	LoginInfoDto loginInfoDto;
 
 	@GetMapping("/productManagement")
 	public String productManagement(Model model) {
 
-		if (loginStatusDto.getLoginStatus().equals("admin")) {
+		if (loginInfoDto.getStatus().equals("admin")) {
 			List<ProductDto> pList = psService.selectProductList();
 			model.addAttribute("ProductList", pList);
-			model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+			model.addAttribute("loginInfo", loginInfoDto);
 			return "productManagement"; // 실제 뷰 페이지의 경로를 반환
 		} else {
 			return "redirect:/";

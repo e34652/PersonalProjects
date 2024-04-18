@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.MemberDto;
 import com.steam.service.member.MemberLoginService;
 import com.steam.service.member.MemberSignUpService;
@@ -18,7 +18,7 @@ import com.steam.service.member.MemberSignUpService;
 public class MemberController {
 
 	@Autowired
-	LoginStatusDto loginStatusDto;
+	LoginInfoDto loginInfoDto;
 	
 	@Autowired
 	MemberLoginService mLoginS;
@@ -28,8 +28,7 @@ public class MemberController {
 
 	@GetMapping("/loginForm")
 	public String loginForm(Model model) {
-		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
-		System.out.println(loginStatusDto.getLoginStatus());
+		model.addAttribute("loginInfo", loginInfoDto);
 		
 	    return "loginForm"; // 실제 뷰 페이지의 경로를 반환
 	}
@@ -53,8 +52,8 @@ public class MemberController {
 	
 	@GetMapping("/logout")
 	public String logout(Model model) {
-		loginStatusDto.setLoginStatus("visitor");
-		model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+		loginInfoDto.setStatus("visitor");
+		model.addAttribute("loginInfo", loginInfoDto);
 		
 	    return "redirect:/"; // 실제 뷰 페이지의 경로를 반환
 	}

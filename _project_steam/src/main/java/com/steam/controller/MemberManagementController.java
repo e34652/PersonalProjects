@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.MemberDto;
 import com.steam.service.member.MemberSearchingService;
 import com.steam.service.member.MemberService;
@@ -28,15 +28,15 @@ public class MemberManagementController {
 	MemberSearchingService msService;
 	
 	@Autowired
-	LoginStatusDto loginStatusDto;
+	LoginInfoDto loginInfoDto;
 	
 	@GetMapping("/memberManagement")
 	public String memberManagement(Model model) {
 		
-		if(loginStatusDto.getLoginStatus().equals("admin")) {
+		if(loginInfoDto.getStatus().equals("admin")) {
 			List<MemberDto> mList = msService.selectMemberList();
 			model.addAttribute("MemberList" , mList);
-			model.addAttribute("loginStatus", loginStatusDto.getLoginStatus());
+			model.addAttribute("loginInfo", loginInfoDto);
 			
 			return "memberManagement"; // 실제 뷰 페이지의 경로를 반환
 			

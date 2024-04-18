@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.steam.model.LoginStatusDto;
+import com.steam.model.LoginInfoDto;
 import com.steam.model.ProductDto;
 import com.steam.service.product.ProductSearchingService;
 import com.steam.service.product.ProductService;
 
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 public class ProductDetailController {
 
 		@Autowired
@@ -28,14 +26,13 @@ public class ProductDetailController {
 		ProductSearchingService psService;
 
 		@Autowired
-		LoginStatusDto loginStatusDto;
+		LoginInfoDto loginInfoDto;
 		
 		@GetMapping("/productDetail")
 		public String productDetail(@RequestParam("num") long num, Model model) {
-			
-			ProductDto product = psService.selectProductByNum(num);
-			model.addAttribute("product", product);
-			
+			ProductDto pDto = psService.selectProductByNum(num);
+			model.addAttribute("product", pDto);
+			model.addAttribute("loginInfo", loginInfoDto);
 			return "productDetail";
 		}
 

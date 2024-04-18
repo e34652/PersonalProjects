@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html class="responsive" lang="ko">
   <head>
@@ -8,6 +9,8 @@
     <meta name="theme-color" content="#171a21" />
     <title>Steam에 오신 것을 환영합니다</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/cart.css" type="text/css">
     <!-- 전역 스타일 -->
     <link
       href="https://store.akamai.steamstatic.com/public/shared/css/shared_global.css?v=wy0wYJxBlt-2&amp;l=koreana"
@@ -311,17 +314,21 @@
           <!-- 글로벌 헤더 끝 -->
         </div>
               <div class="home_page_content">
-              <div id="store_header" role="navigation" aria-label="상점 메뉴" class="">
-		<div class="content">
-			<div id="store_controls">
-				<div class="cart_status_flex" id="cart_status_data">
-				<c:if test="${loginInfo.status eq 'member' || loginInfo.status eq 'admin'}">
-					<div class="store_header_btn_green store_header_btn">
-						<a class="store_header_btn_content" href="/cart?memberNum=${loginInfo.memberNum}">장바구니</a>
-					</div>
-					</c:if>
-				</div>
-			</div>
+                <div
+                  id="store_header"
+                  role="navigation"
+                  aria-label="상점 메뉴"
+                  class=""
+                >
+                  <div class="content">
+                    <div id="store_controls">
+                      <div class="cart_status_flex" id="cart_status_data">
+                        <div
+                          data-featuretarget="shoppingcart-count-widget"
+                          data-props='{"count":0}'
+                        ></div>
+                      </div>
+                    </div>
 
                     <div id="store_nav_area">
                       <div class="store_nav_leftcap"></div>
@@ -345,7 +352,6 @@
                                 href="/"
                                 >상점 홈</a
                               >
-                             
                           </div>
                           
 
@@ -391,26 +397,83 @@
                 </div>
 
                 
-     
-<c:forEach var="product" items="${productList}">
-<a href="/productDetail?num=${product.num}" class="tab_item  ">
-  <div class="tab_item_cap">
-    <img class="tab_item_cap_img" src="/img/preview/${product.name}_preview.jpg" id="delayedimage_home_tabs_autoload_2" alt="${product.name}" >
-  </div>
-   <div class="discount_block tab_item_discount no_discount" data-price-final=${product.price} data-bundlediscount="0" data-discount="0"><div class="discount_prices"><div class="discount_final_price">₩ ${product.price}</div></div></div>
-    		
-      <div class="tab_item_content">
-    <div class="tab_item_name">${product.name}</div>
-    <div class="tab_item_details">
-      <span class="platform_img win"></span>
-      <div class="tab_item_top_tags">
-      <span class="top_tag">${product.genre}</span>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both;"></div>
-</a>
-</c:forEach>
+                <div class="content_subject"><span>장바구니</span></div>
+                <!-- 장바구니 리스트 -->
+                <div class="content_container">
+                <!-- 장바구니 가격 합계 -->
+                <!-- cartInfo -->   
+                <div class="content_totalCount_section">
+                    
+                    <table class="subject_table">
+                        <caption>표 제목 부분</caption>
+                        <tbody>
+                            <tr>
+                              <th class="td_width_2"></th>
+                                <th class="td_width_2"></th>
+                                <th class="td_width_2"></th>
+                                <th class="td_width_2"></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="cart_table">
+                        <caption>표 내용 부분</caption>
+                        <tbody>
+                            <c:forEach items="${cartList}" var="product">
+                                <tr>
+                   		<td class="td_width_1 cart_info"><input type="hidden" class="individual_totalPrice" value="${product.price}"></td>
+                                    <td class="td_width_3"><img src="img/header/${product.name}_header.jpg" alt="상품이미지" width="200" height="auto"/></td>
+                                    <td class="td_width_3">${product.name}</td>
+                                    <td class="td_width_4 price_td">
+                                      <!-- 판매가 -->
+                                      <div class="price_wrapper">
+                                          <span><fmt:formatNumber value="${product.price}" pattern="#,### 원" /></span>
+                                      </div>
+                                      <!-- 삭제 버튼 -->
+                                      <div class="delete_btn_wrapper">
+                                          <a href="deleteCart" class="delete_btn" style=" text-decoration: underline;">제거</a>
+                                      </div>
+                                  </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 가격 종합 -->
+                <div class="content_total_section">
+                    <div class="total_wrap">
+                        <table>
+                            <tr>
+                                <td>
+                                  
+                                    <tr class="totalPriceSize">
+                                        <td class="left-align">예상 합계</td>
+                                        <td class="right-align">
+                                            <strong><span class="totalPrice"></span> 원</strong>
+                                        </td>
+                                    </tr>
+                                
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>							
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="boundary_div">구분선</div>
+
+                        <div class="content_btn_section">
+                          <a href="#" class="continue_button" style="font-size: 15px; width: 250px;height: auto; padding:0px">주문하기</a>
+                      </div>
+                    </div>
+                </div>
+              
+                <!-- 구매 버튼 영역 -->
+            
+              </div>
 
           <!-- Footer -->
           <div id="footer_spacer" class="small_footer"></div>
@@ -434,5 +497,24 @@
       <!-- responsive_page_content -->
     </div>
     <!-- responsive_page_frame -->
+
+<script>
+$J(document).ready(function () {
+	  /* 종합 정보 섹션 정보 삽입 */
+	  let totalPrice = 0; // 총 가격
+	  $J(".cart_info input.individual_totalPrice").each(function (index, element) {
+	    // 총 가격
+	    let price = parseInt($J(element).val()); // 각 상품의 가격 가져오기
+	    console.log("상품 가격:", price); // 값 로깅
+	    totalPrice += price; // 총 가격에 더하기
+	  });
+	  console.log("총 가격:", totalPrice); // 총 가격 로깅
+
+	  /* 값 삽입 */
+
+	  // 총 가격
+	  $J(".totalPrice").text(totalPrice.toLocaleString());
+	});
+</script>
   </body>
 </html>

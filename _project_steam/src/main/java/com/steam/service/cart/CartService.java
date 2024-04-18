@@ -8,11 +8,7 @@ import org.springframework.stereotype.Service;
 import com.steam.model.ProductDto;
 import com.steam.repository.CartMapper;
 
-import lombok.extern.slf4j.Slf4j;
-
-
 @Service
-@Slf4j
 public class CartService {
 
 	@Autowired
@@ -28,4 +24,9 @@ public class CartService {
 		
 		return cList;
 	}
+	
+	public void deleteFromCart(long memberNum, long productNum) {
+		cMapper.deleteFromCart(memberNum, productNum);
+	}
+	
 }

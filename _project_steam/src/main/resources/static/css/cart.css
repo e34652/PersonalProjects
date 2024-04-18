@@ -1,294 +1,234 @@
 @charset "UTF-8";
-*{
-	margin: 0;
-	padding:0;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
-a{
-	text-decoration: none;
+.table_text_align_center {
+  text-align: center;
 }
-/* 화면 전체 렙 */
-.wrapper{
-	width: 100%;
+caption {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
 }
-/* content 랩 */
-.wrap{
-	width : 1080px;
-	margin: auto;
+.content_container {
+  display: flex;
 }
-/* 홈페이지 기능 네비 */ 
-.top_gnb_area{
-	width: 100%;
-    height: 50px;
-    background-color: #f0f0f1;
-    position:relative;    
+.totalPriceSize{
+	font-size:20px;
 }
-.top_gnb_area .list{
-	position: absolute;
-    top: 0px;
-    right: 0;
-    
+.content_subject {
+  height: 50px;
+  line-height: 110px;
+
+  margin-bottom: 60px;
 }
-.top_gnb_area .list li{
-	list-style: none;	
-    float : left;
-    padding: 13px 15px 0 10px;
-    font-weight: 900;
-    cursor: pointer;
+.content_subject span {
+  padding-left: 30 px;
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+  font-weight: bolder;
 }
-/* 로고, 검색, 로그인 */
-.top_area{
-	width: 100%;
-    height: 150px;
-    /* background-color: #f7f0b9; */
-}
-/* 로고 영역 */
-.logo_area{
-	width: 25%;
-	height: 100%;
-	float:left;
-}
-.logo_area img{
-	width: 100%;
-    height: 100%;
+.content_total_section {
+  flex: 1;
+  position: sticky;
+  top: 0; /* 화면 위쪽으로 고정 */
+  z-index: 1000; /* 다른 요소 위에 표시되도록 z-index 설정 */
+
+  padding: 10px; /* 선택적으로 내부 여백 설정 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 선택적으로 그림자 효과 추가 */
 }
 
-/* 검색 박스 영역 */
-.search_area{
-	width: 50%;
-	height: 100%;
-	float:left;	
-}
-.search_wrap{
-	width: 100%;
-    height: 100%;
-}
-#searchForm{
-	width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.search_input{
-    display: flex;
-    height: 30%;
-    width: 80%;	
-}
-.search_input select{
-	width: 20%;
-    text-align: center;
-    font-size: 15px;	
-}
-.search_input input{
-    margin-left: 10px;
-    width: 57%;	
-    font-size: 18px;
-    padding-left: 2%;
-}
-.search_btn{
-	margin-left: 10px;
-    width: 17%;
-    border-radius: 14px;
-    font-size: 17px;
-    font-weight: 600;	
-}	
-
-
-/* 로그인 버튼 영역 */
-.login_area{
-	width: 25%;
-	height: 100%;
-	display: inline-block;	
-	text-align: center;		
-}
-.login_button{
-	height: 50%;
-    background-color: #D4DFE6;
-    margin-top: 30px;
-    line-height: 77px;
-    font-size: 40px;
-    font-weight: 900;
-    border-radius: 10px;
-    cursor: pointer;	
-}
-.login_area>span{
-	margin-top: 10px;
-    font-weight: 900;
-    display: inline-block;
-}
-.login_button{
-	height : 50%;
-	background-color: #D4DFE6;
-	margin-top:30px;
+.content_totalCount_section {
+  flex: 1;
+  /* 왼쪽 영역이 오른쪽 영역보다 더 넓도록 설정 */
+  margin-right: 20px; /* 오른쪽 영역과의 간격 조절 */
+  margin-bottom: 12px;
 }
 
-/* 제품 목록 네비 */
-.navi_bar_area{
-	width: 100%;
-    height: 70px;
-    background-color: #7696fd;
+.content_btn_section {
+  margin-top: 20px;
+  text-align: right;
+}
+.content_btn_section a {
+  color: #fefeff;
+
+  min-width: 125px;
+  padding: 17px 25px;
+  display: inline-block;
+  height: 39px;
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 14px;
+  line-height: 39px;
 }
 
-/* 홈페이지 메인 제품 목록  */
-.content_area{
-	width: 100%;
-    min-height: 1000px;
+.subject_table {
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%;
+  text-align: center;
 }
 
+th {
+  text-align: center;
+  color: #d0d0d0;
+  border-bottom: 1px solid #e7e7e7;
 
-
-
-/* 로그인 성공 영역 */
-.login_success_area{
-	height: 62%;
-    width: 80%;
-    border: 2px solid #7474ad;
-    border-radius: 15px;
-    margin: 5% auto;
-    padding-top: 5%;
+  padding: 2px 0;
 }
-.login_success_area>a{
-    font-size: 15px;
-    font-weight: 900;
-    display: inline-block;
-    margin-top: 5px;
-    background: #e1e5e8;
-    width: 82px;
-    height: 22px;
-    line-height: 22px;
-    border-radius: 25px;
-    color: #606267;    
+.td_width_1 {
+  width: 5%;
+  text-align: center;
 }
-.login_success_area>span{
-	display : block;
-	text-align: left;
-    margin-left: 10%;
+.td_width_2 {
+  width: 10%;
+  text-align: center;
 }
-
-/* 검색결과 없음 */
-.table_empty{
-	height: 50px;
-    text-align: center;
-    margin: 200px 0 215px 0px;
-    font-size: 25px;
+.td_width_3 {
+  width: 25%;
+  text-align: center;
 }
-
-/* 필터정보 */
-.search_filter {
-    width: 85%;
-    margin: auto;
-	margin-top: 30px;
-    margin-bottom: 50px;    
-} 
-.filter_button_wrap {
-    width: 100%;
+.td_width_4 {
+  width: 15%;
+  text-align: center;
 }
-
-.filter_button_wrap button {
-    width: 50%;
-} 
-.filter_button{
-	background-color: #04AA6D;
-	border: 1px solid green;
-	color: white;
-	padding: 10px 24px;
-	cursor: pointer;
-	float: left;
-} 
-.filter_button_wrap:after {
-    content: "";
-    clear: both;
-    display: table;
-}  	
-.filter_button_wrap button:not(:last-child) {
-    border-right: none;
-} 
-.filter_button:hover {
-    background-color: #3e8e41;
+.cart_table {
+  font-size: 14px;
+  line-height: 20px;
 }
-.filter_active{
-	background-color: #045d3c;
+.cart_table tr {
+  height: 110px;
 }
-.filter_content{
-	padding:20px 50px 20px 50px;
-	border: 1px solid gray;
+.price_td {
+  position: relative;
+  padding-left: 5px;
 }
-.filter_content a:not(:first-child){
-	margin-left: 10px;
+.red_color {
+  color: red;
 }
-.filter_a{
-	display: block;
+.green_color {
+  color: green;
 }
-
-.filter_b{
-	display: none;
+.cart_table td {
+  border-bottom: 1px solid #e7e7e7;
 }
-
-
-
-/* footer navai 영역 */
-.footer_nav{
-	width:100%;
-	height:50px;
+.quantity_div {
+  position: relative;
+  width: 42px;
+  height: 25px;
+  text-align: left;
+  margin: 5px auto;
 }
-.footer_nav_container{
-	width: 100%;
-	height: 100%;
-	background-color:#8EC0E4;
+.quantity_input {
+  position: absolute;
+  width: 27px;
+  height: 23px;
+  text-align: center;
+  border: 1px solid #c6c6c6;
+  border-right: 0px;
+  line-height: 19px;
+  font-size: 12px;
+  color: #4c4848;
+  left: 0;
 }
-.footer_nav_container>ul{
-	font-weight : bold;
-	float:left;
-	list-style:none;
-	position:relative;
-	padding-top:10px;
-	line-height: 27px;
-	font-family: dotum;
-	margin-left: 10px;
+.quantity_btn {
+  position: absolute;
+  border: 1px solid #aaa;
+  color: #3a60df;
+  width: 14px;
+  height: 13px;
+  padding: 0px;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 7px;
+  line-height: 6px;
+  vertical-align: middle;
 }
-.footer_nav_container>ul>li{
-	display:inline;
-	width: 45px;
-	height: 19px;
-	padding: 10px 9px 0 10px;
+.plus_btn {
+  top: 0;
+  right: 0;
 }
-.footer_nav_container>ul>span{
-	margin: 0 4px;
+.minus_btn {
+  bottom: 0;
+  right: 0;
 }
-/* footer 영역 */
-.footer{
-	width:100%;
-	height:130px;
-	background-color:#D4DFE6;
-	padding-bottom : 50px;
-}
-.footer_container{
-	width: 100%;
-	height: 100%;
-	margin: auto;
-}
-.footer_left>img {
-	width: 150%;
-    height: 130px;
-    margin-left: -20px;
-    margin-top: -12px;
-}
-.footer_left{
-	float :left;
-	width: 170px;
-	margin-left: 20px;
-	margin-top : 30px;
-	
-}
-.footer_right{
-	float :left;
-	width: 680px;
-	margin-left: 70px;
-	margin-top : 30px;
+.quantity_modify_btn {
+  border: 1px solid #d0d0d0;
+  height: 13px;
+  line-height: 13px;
+  background-color: #fff;
+  text-align: center;
+  width: 28px;
+  display: inline-block;
+  padding: 3px 6px 2px;
+  margin-top: 3px;
 }
 
+.left-align {
+  text-align: left;
+}
 
-/* float 속성 해제 */
-.clearfix{
-	clear: both;
+.right-align {
+  text-align: right;
+}
+
+.delete_btn {
+  margin-left: 10px; /* 가격 텍스트와 버튼 사이의 간격 조절 */
+  font-size: 12px; /* 버튼 크기 조절 */
+}
+
+.delete_btn_wrapper {
+  text-align: right;
+}
+
+.price_wrapper {
+  margin-bottom: 5px; /* 삭제 버튼과의 간격 조절 */
+}
+
+.total_wrap {
+  width: 60%;
+  margin: auto;
+  padding: 10px 0 10px 0;
+}
+.total_wrap td {
+  width: 50%;
+}
+.finalTotalPrice_span {
+  color: #854a72;
+  font-size: 17px;
+  font-weight: bold;
+}
+.totalPoint_span {
+  font-size: 17px;
+  font-weight: bold;
+}
+.boundary_div {
+  font-size: 0;
+  border: 1px dotted #d1c7c7;
+  margin: 5px 0 5px 0;
+}
+
+.continue_button {
+  width: 300px; /* 가로 길이 조정 */
+
+  background-color: #337ab7;
+  color: #ffffff;
+  border: none;
+
+  font-size: 5px; /* 텍스트 크기를 줄임 */
+  cursor: pointer;
+  border-radius: 3px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.continue_button:hover {
+  background-color: #5bc0de;
+  color: #ffffff;
 }
