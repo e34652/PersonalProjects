@@ -250,47 +250,104 @@
           </div>
           <!-- 글로벌 헤더 끝 -->
         </div>
+        <div class="home_page_content">
+              <div id="store_header" role="navigation" aria-label="상점 메뉴" class="">
+		<div class="content">
+			<div id="store_controls">
+				<div class="cart_status_flex" id="cart_status_data">
+				<c:if test="${loginInfo.status eq 'member' || loginInfo.status eq 'admin'}">
+					<div class="store_header_btn_green store_header_btn">
+						<a class="store_header_btn_content" href="/cart?memberNum=${loginInfo.memberNum}">장바구니</a>
+					</div>
+					</c:if>
+				</div>
+			</div>
+
+                    <div id="store_nav_area">
+                      <div class="store_nav_leftcap"></div>
+                      <div class="store_nav_bg">
+                        <div
+                          class="store_nav"
+                          data-panel='{"flow-children":"row"}'
+                        >
+                          <div
+                            class="tab flyout_tab"
+                            id="foryou_tab"
+                            data-flyout="foryou_flyout"
+                            data-flyout-align="left"
+                            data-flyout-valign="bottom"
+                            data-flyout-delay="300"
+                            data-panel='{"focusable":true}'
+                          >
+                            <span class="pulldown">
+                              <a
+                                class="pulldown_desktop"
+                                href="/"
+                                >상점 홈</a
+                              >
+                             
+                          </div>
+                          
+
+                          <div class="search_flex_spacer"></div>
+                          <div class="search_area">
+                            <div id="store_search">
+                              <form
+                                id="searchform"
+                                name="searchform"
+                                method="get"
+                                action="search"
+                                role="search"
+                              >
+                                <div class="searchbox">
+                                  <input
+                                    id="store_nav_search_term"
+                                    name="term"
+                                    type="search"
+                                    class="default"
+                                    placeholder="검색하기"
+                                    size="22"
+                                    autocomplete="off"
+                                    maxlength="64"
+                                  />
+                                  <a
+                                    href="#"
+                                    id="store_search_link"
+                                    onclick="var $Form = $J(this).parents('form'); $Form.submit(); return false;"
+                                    aria-label="Steam 검색"
+                                    ><img
+                                      src="https://store.akamai.steamstatic.com/public/images/blank.gif"
+                                      alt=""
+                                  /></a>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="store_nav_rightcap"></div>
+                    </div>
+                  </div>
+                </div>
+        
        
-        <!-- create two column layout for Deck, Tablet sized screens -->
-        <div id="tabletGrid" class="tablet_grid">
-          <div
-            class="page_content_ctn"
-            itemscope
-            itemtype="http://schema.org/Product"
-          >
-            <meta
-              itemprop="image"
-              content="https://cdn.cloudflare.steamstatic.com/steam/apps/2881230/capsule_231x87.jpg?t=1711990813"
-            />
+      
            
 
            
           
 
             <div class="block game_media_and_summary_ctn">
-              <script type="text/javascript">
-                var strRequiredVersion = "9";
-                if (typeof g_bIsOnMac != "undefined" && g_bIsOnMac)
-                  strRequiredVersion = "10.1.0";
-              </script>
-
+            
               <div class="game_background_glow">
-                <div
-                  data-panel='{"autoFocus":true,"focusable":true,"clickOnActivate":true}'
-                  class="responsive_page_header_img"
-                  style="display: none"
-                >
-                  <img
-                    style="width: 100%"
-                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2881230/header.jpg?t=1711990813"
-                  />
-                </div>
+                
 
                 <div
                   class="block_content page_content"
                   id="game_highlights"
                   data-panel='{"flow-children":"column"}'
                 >
+                
                   <div class="rightcol" data-panel='{"flow-children":"column"}'>
                     <div class="glance_ctn">
                       <div
@@ -546,10 +603,11 @@
                         <c:when test="${product.price == '0'}">  
                         <div class="game_purchase_price price">무료</div>
                         <div id="freeGameBtn" class="btn_addtocart">
-                          <a 
-                          class="btn_green_steamui btn_medium" 
-                          href="/addToCart?productNum=${product.num}&memberNum=${loginInfo.memberNum}" 
-                          id="btn_add_to_cart_116049">
+                            <a 
+    class="btn_green_steamui btn_medium" 
+    href="#" 
+    onclick="addToCart(${product.num}, ${loginInfo.memberNum})"
+    id="btn_add_to_cart_116049">
 							<span >장바구니에 추가</span>
 						  </a>
                         </div>
@@ -557,13 +615,13 @@
                       <c:otherwise>
                       <div class="game_purchase_price price" style="margin-top: -10px;">${product.price}</div>
                         <div class="btn_addtocart" >
-                         <a 
-                          class="btn_green_steamui btn_medium" 
-                          href="/addToCart?productNum=${product.num}&memberNum=${loginInfo.memberNum}" 
-                          id="btn_add_to_cart_116049">
+                        <a 
+    class="btn_green_steamui btn_medium" 
+    href="#" 
+    onclick="addToCart(${product.num}, ${loginInfo.memberNum})"
+    id="btn_add_to_cart_116049">
 							<span >장바구니에 추가</span>
 						  </a>
-
 						</div>
                       </c:otherwise>
                     </c:choose>
@@ -738,7 +796,35 @@
       <!-- responsive_page_content -->
     </div>
     <!-- responsive_page_frame -->
-    
-
+<script>
+function addToCart(productNum, memberNum) {
+$.ajax({
+	
+    url: '/addToCart',
+    type: 'POST',
+    data: {
+        productNum: productNum,
+        memberNum: memberNum
+    },
+    success: function(response) {
+        if (response === '성공') {
+            // 성공 시 장바구니로 이동하는 팝업 표시
+            if (confirm('장바구니로 이동하시겠습니까?')) {
+                window.location.href ="/cart?memberNum=" + memberNum; // 장바구니 페이지 URL로 이동
+            }
+        } else if(response === '중복') {
+            // 실패 시 로그인이 필요합니다 팝업 표시
+            alert('이미 장바구니에 있는 상품입니다');
+        } else{ 
+        	alert('로그인이 필요합니다');
+        	}
+    	},
+    error: function(xhr, status, error) {
+        // 에러 처리
+        console.error(xhr, status, error);
+    	}
+	});
+}
+</script>
   </body>
 </html>

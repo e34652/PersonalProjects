@@ -13,20 +13,24 @@ public class CartService {
 
 	@Autowired
 	CartMapper cMapper;
-	public void addToCart(long memberNum, long productNum) {
-	
-		cMapper.addToCart(memberNum, productNum);
+
+	public int addToCart(long memberNum, long productNum) {
+		int result = cMapper.duplicationCheck(memberNum, productNum);
+		if (result == 0) {
+			cMapper.addToCart(memberNum, productNum);
+			return 1;
+		}
+		return 0;
 	}
-	
-	
-	public List<ProductDto> loadCart(long memberNum){
+
+	public List<ProductDto> loadCartList(long memberNum) {
 		List<ProductDto> cList = cMapper.cartlistByMemberNum(memberNum);
-		
+
 		return cList;
 	}
-	
+
 	public void deleteFromCart(long memberNum, long productNum) {
 		cMapper.deleteFromCart(memberNum, productNum);
 	}
-	
+
 }

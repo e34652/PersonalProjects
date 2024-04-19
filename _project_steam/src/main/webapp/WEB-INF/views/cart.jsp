@@ -419,10 +419,10 @@
                         <caption>표 내용 부분</caption>
                         <tbody>
                             <c:forEach items="${cartList}" var="product">
-                                <tr>
-                   		<td class="td_width_1 cart_info"><input type="hidden" class="individual_totalPrice" value="${product.price}"></td>
+                                <tr id="product_tr_${product.num}">
+                   		<td class="td_width_1 cart_info"><input type="hidden" id="product_price_${product.num}" class="individual_totalPrice" value="${product.price}"></td>
                                     <td class="td_width_3"><img src="img/header/${product.name}_header.jpg" alt="상품이미지" width="200" height="auto"/></td>
-                                    <td class="td_width_3">${product.name}</td>
+                                    <td class="td_width_3"><a href="/productDetail?productNum=${product.num}">${product.name}</a></td>
                                     <td class="td_width_4 price_td">
                                       <!-- 판매가 -->
                                       <div class="price_wrapper">
@@ -430,7 +430,7 @@
                                       </div>
                                       <!-- 삭제 버튼 -->
                                       <div class="delete_btn_wrapper">
-                                          <a href="deleteCart" class="delete_btn" style=" text-decoration: underline;">제거</a>
+                                          <a href="#" onclick="deleteFromCart(${product.num}, ${loginInfo.memberNum})" class="delete_btn" style=" text-decoration: underline;">제거</a>
                                       </div>
                                   </td>
                                 </tr>
@@ -499,6 +499,40 @@
     <!-- responsive_page_frame -->
 
 <script>
+function deleteFromCart(productNum, memberNum) {
+    $J.ajax({
+        url: '/deleteFromCart',
+        type: 'Post',
+        data: {
+            productNum: productNum,
+            memberNum: memberNum
+        },
+        success: function(data) {
+            // AJAX 요청이 성공했을 때 실행되는 함수
+            alert('상품이 장바구니에서 제거되었습니다');
+            // 해당 상품 요소를 동적으로 제거합니다.
+            var totalPriceValue = parseInt($J(".totalPrice").text());
+            var productPriceValue = parseInt($J('#product_price_' + productNum).val());
+            
+            $J('#product_tr_' + productNum).remove();
+            
+            // 총 가격에서 해당 상품 가격을 빼고, 결과를 다시 .totalPrice 요소의 텍스트로 설정합니다.
+   
+            
+            console.log('totalPriceValue:', totalPriceValue);
+            console.log('productPriceValue:', productPriceValue);
+            
+            
+            $J(".totalPrice").text(totalPriceValue - productPriceValue);
+        }, 
+        error: function(xhr, status, error) {
+            // 에러 처리
+            console.error(xhr, status, error);
+        }
+    });
+}
+</script>
+<script>
 $J(document).ready(function () {
 	  /* 종합 정보 섹션 정보 삽입 */
 	  let totalPrice = 0; // 총 가격
@@ -514,6 +548,7 @@ $J(document).ready(function () {
 
 	  // 총 가격
 	  $J(".totalPrice").text(totalPrice.toLocaleString());
+	  console.log("총 가격:", $J(".totalPrice").text());
 	});
 </script>
   </body>

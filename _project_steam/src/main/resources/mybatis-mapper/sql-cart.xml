@@ -28,13 +28,20 @@
 	<select id="cartlistByMemberNum" parameterType="long"
 		resultMap="product">
     <![CDATA[
-        SELECT p.product_name, p.product_price
+        SELECT p.product_num, p.product_name, p.product_price
         FROM product_tb p
         JOIN cart_tb c ON p.product_num = c.product_num
         WHERE c.member_num = #{num}
     ]]>
 	</select>
 
+	<select id="duplicationCheck" parameterType="long" resultType="int">
+    <![CDATA[
+        SELECT count(*)
+        FROM cart_tb
+        WHERE member_num = #{memberNum} AND product_num = #{productNum}
+    ]]>
+</select>
 
 	<insert id="addToCart" parameterType="long">
 			<![CDATA[
@@ -49,7 +56,10 @@
 			]]>
 	</insert>
 
-
+<delete id="deleteFromCart" parameterType="long">
+		DELETE FROM cart_tb WHERE
+		member_num = #{memberNum} AND product_num = #{productNum}
+	</delete>
 
 
 </mapper>

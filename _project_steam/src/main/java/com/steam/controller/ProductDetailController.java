@@ -29,14 +29,10 @@ public class ProductDetailController {
 		LoginInfoDto loginInfoDto;
 		
 		@GetMapping("/productDetail")
-		public String productDetail(@RequestParam("num") long num, Model model) {
+		public String productDetail(@RequestParam("productNum") long num, Model model) {
 			ProductDto pDto = psService.selectProductByNum(num);
 			model.addAttribute("product", pDto);
 			model.addAttribute("loginInfo", loginInfoDto);
 			return "productDetail";
 		}
-
-
-
-
 }
