@@ -499,6 +499,7 @@
     <!-- responsive_page_frame -->
 
 <script>
+
 function deleteFromCart(productNum, memberNum) {
     $J.ajax({
         url: '/deleteFromCart',
@@ -511,8 +512,8 @@ function deleteFromCart(productNum, memberNum) {
             // AJAX 요청이 성공했을 때 실행되는 함수
             alert('상품이 장바구니에서 제거되었습니다');
             // 해당 상품 요소를 동적으로 제거합니다.
-            var totalPriceValue = parseInt($J(".totalPrice").text());
-            var productPriceValue = parseInt($J('#product_price_' + productNum).val());
+            var totalPriceValue = $J(".totalPrice").text().replace(/[^\d.-]/g, '');
+            var productPriceValue = $J('#product_price_' + productNum).val();
             
             $J('#product_tr_' + productNum).remove();
             
@@ -523,14 +524,16 @@ function deleteFromCart(productNum, memberNum) {
             console.log('productPriceValue:', productPriceValue);
             
             
-            $J(".totalPrice").text(totalPriceValue - productPriceValue);
-        }, 
+            var totalPriceFormatted = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(totalPriceValue - productPriceValue);
+            $J(".totalPrice").text(totalPriceFormatted);
+        },
         error: function(xhr, status, error) {
             // 에러 처리
             console.error(xhr, status, error);
         }
     });
 }
+
 </script>
 <script>
 $J(document).ready(function () {
